@@ -4,12 +4,15 @@ transforms 8080 assembly files from boring, plain files with no syntax hightligh
 
 ## Install
 
-### Vim 8 Package Manager
+<details>
+  <summary>Vim 8 Package Manager</summary>
+
+<br>
 
 Install the plugin as a Vim 8 Package
 
-$ as user  
-\# as root  
+`$` as user  
+`#` as root  
 
 ```
 $ mkdir -pv ~/.vim/pack/*/start/
@@ -21,28 +24,45 @@ $ git clone git@github.com:sage-etcher/vim-i8080-syntax.git
 $ git clone https://github.com/sage-etcher/vim-i8080-syntax.git
 ```
 
+</details>
+
 
 ## Example
 
 ___Note:___ syntax highlighting automatically applies to all files with extension of `.8080`
 
-### Without the plug-in
+<details>
+  <summary>8080 extension, no plug-in</summary>
 
-This is what 8080 pnemonic'ed code looks like without a custom syntax file.
+  <br>
+  
+  This is what 8080 pnemonic'ed code looks like without a custom syntax file.
 
-<img title="cpm-helloworld.8080 without plug-in" alt="Example of code without the plugin enabled" src="./images/cpm-helloworld-syntax-off.png">
+  <img title="cpm-helloworld.8080 without plug-in" alt="Example of code without the plugin enabled" src="./images/cpm-helloworld-syntax-off.png">
 
-Standard `asm` file extension also doesn't quite work, being the stock highlighting for it is based on a much more modern assembly pnemonic. Here's and example of what it looks like aswell!
+</details>
+<details>
+  <summary>8080 extension, with plug-in</summary>
 
-<img title="cpm-helloworld.asm without plug-in" alt="Example of code without the plugin enabled, as a dot asm file" src="./images/cpm-helloworld-asm-syntax-on.png">
+  <br>
+  
+  However, if instead we use the supplied custom syntaxing files, we get a much more readable, pretty, and non-eyebleed display =D
 
-### Using the plugin
+  <img title="cpm-helloworld.8080 with plug-in" alt="Example of code with the plugin enabled" src="./images/cpm-helloworld-syntax-on.png">
 
-However, if instead we use the supplied custom syntaxing files, we get a much more readable, pretty, and non-eyebleed display =D
+  Much better!
 
-<img title="cpm-helloworld.8080 with plug-in" alt="Example of code with the plugin enabled" src="./images/cpm-helloworld-syntax-on.png">
+</details>
+<details>
+  <summary>Standard asm extension</summary>
 
-Much better!
+  <br>
+  
+  Standard `asm` file extension also doesn't quite work, being the stock highlighting for it is based on a much more modern assembly pnemonic. Here's and example of what it looks like aswell!
+
+  <img title="cpm-helloworld.asm without plug-in" alt="Example of code without the plugin enabled, as a dot asm file" src="./images/cpm-helloworld-asm-syntax-on.png">
+
+</details>
 
 ## License
 
