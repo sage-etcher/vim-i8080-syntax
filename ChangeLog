@@ -1,3 +1,14 @@
+10/27/2023 14:46 Sage I. Hendricks <sage.codes@email.com>
+
+	Started writing an overly enthusiastic, high-energy README.md file for
+	github, also added an INSTALL file.
+
+	* README.md: Added several section: a main title, description,
+	installation instructions, a section for examples, and a section
+	displaying the licensing information
+	* INSTALL: Copied the install section from the README.md and made some
+	minor formatting changes
+
 10/27/2023 14:22 Sage I. Hendricks <sage.codes@email.com>
 
 	Applied the Apache v2.0 license to all 3 source files
