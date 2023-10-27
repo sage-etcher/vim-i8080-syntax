@@ -1,0 +1,6 @@
+10/27/2023 14:02 Sage I. Hendricks <sage.codes@email.com>
+
+	Made git ignore temporary files from editor (swp and bak extensions)
+
+	* .gitignore: added exclusion for all files of types 'swp' and 'bak'
+
