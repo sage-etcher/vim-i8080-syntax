@@ -1,3 +1,11 @@
+10/27/2023 14:09 Sage I. Hendricks <sage.codes@email.com>
+
+	Imported completed local code for the plugin.
+
+	* ftdetect/filetype.vim: added recognition of '8080' filetype
+	* ftdetect/8080.vim: added setter for the sytaxing of '8080' files
+	* syntax/8080.vim: added keywords and matches for the pnemonic style
+
 10/27/2023 14:02 Sage I. Hendricks <sage.codes@email.com>
 
 	Made git ignore temporary files from editor (swp and bak extensions)
