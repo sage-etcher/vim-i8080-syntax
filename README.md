@@ -30,13 +30,17 @@ ___Note:___ syntax highlighting automatically applies to all files with extensio
 
 This is what 8080 pnemonic'ed code looks like without a custom syntax file.
 
-<!-- place medium sized image here -->
+<img title="cpm-helloworld.8080 without plug-in" alt="Example of code without the plugin enabled" src="./images/cpm-helloworld-syntax-off.png">
+
+Standard `asm` file extension also doesn't quite work, being the stock highlighting for it is based on a much more modern assembly pnemonic. Here's and example of what it looks like aswell!
+
+<img title="cpm-helloworld.asm without plug-in" alt="Example of code without the plugin enabled, as a dot asm file" src="./images/cpm-helloworld-asm-syntax-on.png">
 
 ### Using the plugin
 
 However, if instead we use the supplied custom syntaxing files, we get a much more readable, pretty, and non-eyebleed display =D
 
-<!-- place medium sized image here -->
+<img title="cpm-helloworld.8080 with plug-in" alt="Example of code with the plugin enabled" src="./images/cpm-helloworld-syntax-on.png">
 
 Much better!
 

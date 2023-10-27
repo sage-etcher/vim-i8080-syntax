@@ -1,3 +1,11 @@
+10/27/2023 15:40 Sage I. Hendricks <sage.codes@email.com>
+
+	Added Example program and Example images in the README.
+
+	* examples/*: example program sources
+	* images/*: example images of plugin on and off
+	* README.md: Added img tags for the example images
+
 10/27/2023 15:06 Sage I. Hendricks <sage.codes@email.com>
 
 	Fixed a typo in main source file.
