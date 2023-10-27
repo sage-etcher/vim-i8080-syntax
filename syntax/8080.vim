@@ -37,7 +37,7 @@ syn keyword i8080InstructionRotate RLC RRC RAL RAR
 syn keyword i8080InstructionLogical ANA ANI XRA XRI ORA ORI
 syn keyword i8080InstructionBranch CMP CPI JMP JNZ JZ JNC JC JPO JPE JP JM PCHL CALL CNZ CZ CNC CC CPO CPE CP CM RET RNZ RZ RNC RC RPO RPE RP RM RST
 syn keyword i8080InstructionStack PUSH POP
-syn keyword i0880InstructionOther IN OUT
+syn keyword i8080InstructionOther IN OUT
 
 syn keyword i8080Register A B C D E F H L AF BC DE HL M SP PSW
 

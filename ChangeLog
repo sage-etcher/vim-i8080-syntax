@@ -1,3 +1,9 @@
+10/27/2023 15:06 Sage I. Hendricks <sage.codes@email.com>
+
+	Fixed a typo in main source file.
+
+	* syntax/8080.vim: fixed typo, changed line with '0880' to '8080'
+
 10/27/2023 15:00 Sage I. Hendricks <sage.codes@email.com>
 
 	Fixed install path for Vim8 Package Manager
