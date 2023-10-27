@@ -8,16 +8,23 @@ transforms 8080 assembly files from boring, plain files with no syntax hightligh
 
 Install the vim plugin as a vim v8 plugin
 
-\$ as user  
+$ as user  
 \# as root  
 
 ```
 $ mkdir -pv ~/.vim/plug/*/start/
 $ cd ~/.vim/plug/*/start
-$ git clone github.com/sage-etcher/vim-i8080-syntax.git
+$ git clone git@github.com:sage-etcher/vim-i8080-syntax.git
+
+  or
+
+$ git clone https://github.com/sage-etcher/vim-i8080-syntax.git
 ```
 
+
 ## Example
+
+___Note:___ syntax highlighting automatically applies to all files with extension of `.8080`
 
 ### Without the plug-in
 
