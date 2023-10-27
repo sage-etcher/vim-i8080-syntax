@@ -1,11 +1,11 @@
 
-Install the plugin as a vim8 plugin
+Install the plugin as a Vim 8 Package
 
 from the terminal run the following, while "$ " is a user prompt and "# " is
 from a root prompt (sudo)
 
-   $ mkdir -pv ~/.vim/plug/*/start/
-   $ cd ~/.vim/plug/*/start
+   $ mkdir -pv ~/.vim/pack/*/start/
+   $ cd ~/.vim/pack/*/start
    $ git clone git@github.com:sage-etcher/vim-i8080-syntax.git
 
      or

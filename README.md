@@ -4,16 +4,16 @@ transforms 8080 assembly files from boring, plain files with no syntax hightligh
 
 ## Install
 
-### Vim 8 Plug
+### Vim 8 Package Manager
 
-Install the vim plugin as a vim v8 plugin
+Install the plugin as a Vim 8 Package
 
 $ as user  
 \# as root  
 
 ```
-$ mkdir -pv ~/.vim/plug/*/start/
-$ cd ~/.vim/plug/*/start
+$ mkdir -pv ~/.vim/pack/*/start/
+$ cd ~/.vim/pack/*/start
 $ git clone git@github.com:sage-etcher/vim-i8080-syntax.git
 
   or

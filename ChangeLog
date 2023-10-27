@@ -1,3 +1,10 @@
+10/27/2023 15:00 Sage I. Hendricks <sage.codes@email.com>
+
+	Fixed install path for Vim8 Package Manager
+
+	* README.md: fixed installation instructions
+	* INSTALL: fixed instructions
+
 10/27/2023 14:55 Sage I. Hendricks <sage.codes@email.com>
 
 	Added SSH git clone to install instructions aswell as HTML clone.
