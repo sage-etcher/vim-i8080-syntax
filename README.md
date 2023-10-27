@@ -1,4 +1,4 @@
-# Intel 8080 ASM Pnemonics Syntax Hightlighting
+# Intel 8080 Syntax Hightlighting
 
 transforms 8080 assembly files from boring, plain files with no syntax hightlighting, to a wonderfully colourful, syntax highlighted file, as all code should be in this day and age!
 
