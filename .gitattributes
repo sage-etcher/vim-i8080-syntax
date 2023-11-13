@@ -1,11 +1,14 @@
 *       text=auto
-*.vim   text eof=lf
-*.asm   text eof=lf
-*.8080  text eof=lf linguist-language=Assembly
-*.md    text eof=lf
+*.vim   text eol=lf
+*.asm   text eol=lf
+*.8080  text eol=lf linguist-language=Assembly
+*.md    text eol=lf
+
 *.png   binary
 
-ChangeLog   text eof=lf
-INSTALL     text eof=lf
-LICENSE     text eof=lf
+ChangeLog   text eol=lf
+INSTALL     text eol=lf
+LICENSE     text eol=lf
 
+.gitattributes  text eol=lf
+.gitignore      text eol=lf
