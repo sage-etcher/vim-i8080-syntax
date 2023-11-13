@@ -1,3 +1,12 @@
+11/13/2023 09:06 Sage I. Hendricks <sage.codes@email.com>
+
+	Fixed a couple number highlighting issues, removed alternate hex 
+	format.
+
+	* syntax/8080.vim (i8080DecNumber): added optional D/d suffixes
+	* syntax/8080.vim (i8080HexNumber): requires that there be a leading 0
+	* syntax/8080.vim (i8080AltHexNumber): commented out (z80 style)
+
 10/27/2023 15:40 Sage I. Hendricks <sage.codes@email.com>
 
 	Added Example program and Example images in the README.
