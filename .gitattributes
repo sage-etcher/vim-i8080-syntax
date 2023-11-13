@@ -1,0 +1,11 @@
+*       text=auto
+*.vim   text eof=lf
+*.asm   text eof=lf
+*.8080  text eof=lf linguist-language=Assembly
+*.md    text eof=lf
+*.png   binary
+
+ChangeLog   text eof=lf
+INSTALL     text eof=lf
+LICENSE     text eof=lf
+
