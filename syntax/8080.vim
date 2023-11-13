@@ -50,11 +50,12 @@ syn match i8080LogicalOperator '\(NOT\|AND\|OR\|XOR\|SHL\|SHR\)'
 
 syn match i8080GeneralSymbol '\(:\|,\)'
 
-syn match i8080DecNumber '\d\+'
+"syn match i8080NumWrapper '\(^\|\A\)\x\+\($\|[0oQqHhBbDd]\=\)' contains=i8080DecNumber,i8080BinNumber,i8080OctNumber,i8080HexNumber
+syn match i8080DecNumber '\d\+\(D\|d\)\='
 syn match i8080BinNumber '[01]\+B'
 syn match i8080OctNumber '\o\+\(O\|Q\|o\|q\)'
-syn match i8080HexNumber '0\=\x\+\(H\|h\)'
-syn match i8080AltHexNumber '0x\x\+'
+syn match i8080HexNumber '0\x*\(H\|h\)'
+"syn match i8080AltHexNumber '0x\x\+'
 
 syn match i8080String '\'[^\n\']*\''
 syn match i8008IllegalString '\"[^\n\"]*\"'
