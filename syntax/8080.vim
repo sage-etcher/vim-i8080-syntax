@@ -28,336 +28,341 @@ endif
 
 
 " basic keyword matches
-syn keyword inst MOV LDAX LDA MVI STA STAX LXI LHLD SHLD SPHL XCHG XTHL ADD ADI ADC ACI SUB SUI SBB SBI DAD INR DCR INX DCX DI EI NOP HLT DAA CMA STC CMC RLC RRC RAL RAR ANA ANI XRA XRI ORA ORI CMP CPI JMP JNZ JZ JNC JC JPO JPE JP JM PCHL CALL CNZ CZ CNC CC CPO CPE CP CM RET RNZ RZ RNC RC RPO RPE RP RM RST PUSH POP IN OUT contained
-syn keyword reg16 B D H SP contained
-syn keyword reg8 A B C D E H L M contained
-syn keyword regstack PSW B D H SP contained
+syn keyword intel8080OPCode MOV LDAX LDA MVI STA STAX LXI LHLD SHLD SPHL XCHG XTHL ADD ADI ADC ACI SUB SUI SBB SBI DAD INR DCR INX DCX DI EI NOP HLT DAA CMA STC CMC RLC RRC RAL RAR ANA ANI XRA XRI ORA ORI CMP CPI JMP JNZ JZ JNC JC JPO JPE JP JM PCHL CALL CNZ CZ CNC CC CPO CPE CP CM RET RNZ RZ RNC RC RPO RPE RP RM RST PUSH POP IN OUT contained
+syn keyword intel8080Register8Bit  A B C D E H L M contained
+syn keyword intel8080Register16Bit B D H SP        contained
+syn keyword intel8080RegisterStack PSW B D H SP    contained
 
-" opcodes
-syn match instruction00 'NOP'                contains=inst
-syn match instruction01 'LXI\s\+B,\s*'       contains=inst,reg16,symbols nextgroup=input
-syn match instruction02 'STAX\s\+B'          contains=inst,reg16
-syn match instruction03 'INX\s\+B'           contains=inst,reg16
-syn match instruction04 'INR\s\+B'           contains=inst,reg8
-syn match instruction05 'DCR\s\+B'           contains=inst,reg8
-syn match instruction06 'MVI\s\+B,\s*'       contains=inst,reg8,symbols nextgroup=input
-syn match instruction07 'RLC'                contains=inst
-"syn match instruction08 '*NOP'               contains=inst
-syn match instruction09 'DAD\s\+B'           contains=inst,reg16
-syn match instruction0A 'LDAX\s\+B'          contains=inst,reg16
-syn match instruction0B 'DCX\s\+B'           contains=inst,reg16
-syn match instruction0C 'INR\s\+C'           contains=inst,reg8
-syn match instruction0D 'DCR\s\+C'           contains=inst,reg8
-syn match instruction0E 'MVI\s\+C,\s*'       contains=inst,reg8,symbols nextgroup=input
-syn match instruction0F 'RRC'                contains=inst
+"
 
-"syn match instruction10 '*NOP'               contains=inst
-syn match instruction11 'LXI\s\+D,\s*'       contains=inst,reg16,symbols nextgroup=input
-syn match instruction12 'STAX\s\+D'          contains=inst,reg16
-syn match instruction13 'INX\s\+D'           contains=inst,reg16
-syn match instruction14 'INR\s\+D'           contains=inst,reg8
-syn match instruction15 'DCR\s\+D'           contains=inst,reg8
-syn match instruction16 'MVI\s\+D,\s*'       contains=inst,reg8,symbols nextgroup=input
-syn match instruction17 'RAL'                contains=inst
-"syn match instruction18 '*NOP'               contains=inst
-syn match instruction19 'DAD\s\+D'           contains=inst,reg16
-syn match instruction1A 'LDAX\s\+D'          contains=inst,reg16
-syn match instruction1B 'DCX\s\+D'           contains=inst,reg16
-syn match instruction1C 'INR\s\+E'           contains=inst,reg8
-syn match instruction1D 'DCR\s\+E'           contains=inst,reg8
-syn match instruction1E 'MVI\s\+E,\s*'       contains=inst,reg8,symbols nextgroup=input
-syn match instruction1F 'RAR'                contains=inst
+" OPCodes
+syn match intel8080OPCode00wrapper 'NOP'                contains=intel8080OPCode
+syn match intel8080OPCode01wrapper 'LXI\s\+B,\s*'       contains=intel8080OPCode,intel8080Register16Bit,intel8080SpecialSymbol nextgroup=intel8080ImplicitInput
+syn match intel8080OPCode02wrapper 'STAX\s\+B'          contains=intel8080OPCode,intel8080Register16Bit
+syn match intel8080OPCode03wrapper 'INX\s\+B'           contains=intel8080OPCode,intel8080Register16Bit
+syn match intel8080OPCode04wrapper 'INR\s\+B'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode05wrapper 'DCR\s\+B'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode06wrapper 'MVI\s\+B,\s*'       contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol nextgroup=intel8080ImplicitInput
+syn match intel8080OPCode07wrapper 'RLC'                contains=intel8080OPCode
+"syn match intel8080OPCode08wrapper '*NOP'               contains=intel8080OPCode
+syn match intel8080OPCode09wrapper 'DAD\s\+B'           contains=intel8080OPCode,intel8080Register16Bit
+syn match intel8080OPCode0Awrapper 'LDAX\s\+B'          contains=intel8080OPCode,intel8080Register16Bit
+syn match intel8080OPCode0Bwrapper 'DCX\s\+B'           contains=intel8080OPCode,intel8080Register16Bit
+syn match intel8080OPCode0Cwrapper 'INR\s\+C'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode0Dwrapper 'DCR\s\+C'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode0Ewrapper 'MVI\s\+C,\s*'       contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol nextgroup=intel8080ImplicitInput
+syn match intel8080OPCode0Fwrapper 'RRC'                contains=intel8080OPCode
 
-"syn match instruction20 '*NOP'               contains=inst
-syn match instruction21 'LXI\s\+H,\s*'       contains=inst,reg16,symbols nextgroup=input
-syn match instruction22 'SHLD\s\+'           contains=inst nextgroup=input
-syn match instruction23 'INX\s\+H'           contains=inst,reg16
-syn match instruction24 'INR\s\+H'           contains=inst,reg8
-syn match instruction25 'DCR\s\+H'           contains=inst,reg8
-syn match instruction26 'MVI\s\+H,\s*'       contains=inst,reg8,symbols nextgroup=input
-syn match instruction27 'DAA'                contains=inst
-"syn match instruction28 '*NOP'               contains=inst
-syn match instruction29 'DAD\s\+H'           contains=inst,reg16
-syn match instruction2A 'LHLD\s\+'           contains=inst nextgroup=input
-syn match instruction2B 'DCX\s\+H'           contains=inst,reg16
-syn match instruction2C 'INR\s\+L'           contains=inst,reg8
-syn match instruction2D 'DCR\s\+L'           contains=inst,reg8
-syn match instruction2E 'MVI\s\+L,\s*'       contains=inst,reg8,symbols nextgroup=input
-syn match instruction2F 'CMA'                contains=inst
+"syn match intel8080OPCode10wrapper '*NOP'               contains=intel8080OPCode
+syn match intel8080OPCode11wrapper 'LXI\s\+D,\s*'       contains=intel8080OPCode,intel8080Register16Bit,intel8080SpecialSymbol nextgroup=intel8080ImplicitInput
+syn match intel8080OPCode12wrapper 'STAX\s\+D'          contains=intel8080OPCode,intel8080Register16Bit
+syn match intel8080OPCode13wrapper 'INX\s\+D'           contains=intel8080OPCode,intel8080Register16Bit
+syn match intel8080OPCode14wrapper 'INR\s\+D'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode15wrapper 'DCR\s\+D'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode16wrapper 'MVI\s\+D,\s*'       contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol nextgroup=intel8080ImplicitInput
+syn match intel8080OPCode17wrapper 'RAL'                contains=intel8080OPCode
+"syn match intel8080OPCode18wrapper '*NOP'               contains=intel8080OPCode
+syn match intel8080OPCode19wrapper 'DAD\s\+D'           contains=intel8080OPCode,intel8080Register16Bit
+syn match intel8080OPCode1Awrapper 'LDAX\s\+D'          contains=intel8080OPCode,intel8080Register16Bit
+syn match intel8080OPCode1Bwrapper 'DCX\s\+D'           contains=intel8080OPCode,intel8080Register16Bit
+syn match intel8080OPCode1Cwrapper 'INR\s\+E'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode1Dwrapper 'DCR\s\+E'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode1Ewrapper 'MVI\s\+E,\s*'       contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol nextgroup=intel8080ImplicitInput
+syn match intel8080OPCode1Fwrapper 'RAR'                contains=intel8080OPCode
 
-"syn match instruction30 '*NOP'               contains=inst
-syn match instruction31 'LXI\s\+SP,\s*'      contains=inst,reg16,symbols nextgroup=input
-syn match instruction32 'STA\s\+'            contains=inst nextgroup=input
-syn match instruction33 'INX\s\+SP'          contains=inst,reg16
-syn match instruction34 'INR\s\+M'           contains=inst,reg8
-syn match instruction35 'DCR\s\+M'           contains=inst,reg8
-syn match instruction36 'MVI\s\+M,\s*'       contains=inst,reg8,symbols nextgroup=input
-syn match instruction37 'STC'                contains=inst
-"syn match instruction38 '*NOP'               contains=inst
-syn match instruction39 'DAD\s\+SP'          contains=inst,reg16
-syn match instruction3A 'LDA\s\+'            contains=inst nextgroup=input
-syn match instruction3B 'DCX\s\+SP'          contains=inst,reg16
-syn match instruction3C 'INR\s\+A'           contains=inst,reg8
-syn match instruction3D 'DCR\s\+A'           contains=inst,reg8
-syn match instruction3E 'MVI\s\+A,\s*'       contains=inst,reg8,symbols nextgroup=input
-syn match instruction3F 'CMC'                contains=inst
+"syn match intel8080OPCode20wrapper '*NOP'               contains=intel8080OPCode
+syn match intel8080OPCode21wrapper 'LXI\s\+H,\s*'       contains=intel8080OPCode,intel8080Register16Bit,intel8080SpecialSymbol nextgroup=intel8080ImplicitInput
+syn match intel8080OPCode22wrapper 'SHLD\s\+'           contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCode23wrapper 'INX\s\+H'           contains=intel8080OPCode,intel8080Register16Bit
+syn match intel8080OPCode24wrapper 'INR\s\+H'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode25wrapper 'DCR\s\+H'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode26wrapper 'MVI\s\+H,\s*'       contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol nextgroup=intel8080ImplicitInput
+syn match intel8080OPCode27wrapper 'DAA'                contains=intel8080OPCode
+"syn match intel8080OPCode28wrapper '*NOP'               contains=intel8080OPCode
+syn match intel8080OPCode29wrapper 'DAD\s\+H'           contains=intel8080OPCode,intel8080Register16Bit
+syn match intel8080OPCode2Awrapper 'LHLD\s\+'           contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCode2Bwrapper 'DCX\s\+H'           contains=intel8080OPCode,intel8080Register16Bit
+syn match intel8080OPCode2Cwrapper 'INR\s\+L'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode2Dwrapper 'DCR\s\+L'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode2Ewrapper 'MVI\s\+L,\s*'       contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol nextgroup=intel8080ImplicitInput
+syn match intel8080OPCode2Fwrapper 'CMA'                contains=intel8080OPCode
 
-syn match instruction40 'MOV\s\+B,\s*B'      contains=inst,reg8,symbols
-syn match instruction41 'MOV\s\+B,\s*C'      contains=inst,reg8,symbols
-syn match instruction42 'MOV\s\+B,\s*D'      contains=inst,reg8,symbols
-syn match instruction43 'MOV\s\+B,\s*E'      contains=inst,reg8,symbols
-syn match instruction44 'MOV\s\+B,\s*H'      contains=inst,reg8,symbols
-syn match instruction45 'MOV\s\+B,\s*L'      contains=inst,reg8,symbols
-syn match instruction46 'MOV\s\+B,\s*M'      contains=inst,reg8,symbols
-syn match instruction47 'MOV\s\+B,\s*A'      contains=inst,reg8,symbols
-syn match instruction48 'MOV\s\+C,\s*B'      contains=inst,reg8,symbols
-syn match instruction49 'MOV\s\+C,\s*C'      contains=inst,reg8,symbols
-syn match instruction4A 'MOV\s\+C,\s*D'      contains=inst,reg8,symbols
-syn match instruction4B 'MOV\s\+C,\s*E'      contains=inst,reg8,symbols
-syn match instruction4C 'MOV\s\+C,\s*H'      contains=inst,reg8,symbols
-syn match instruction4D 'MOV\s\+C,\s*L'      contains=inst,reg8,symbols
-syn match instruction4E 'MOV\s\+C,\s*M'      contains=inst,reg8,symbols
-syn match instruction4F 'MOV\s\+C,\s*A'      contains=inst,reg8,symbols
+"syn match intel8080OPCode30wrapper '*NOP'               contains=intel8080OPCode
+syn match intel8080OPCode31wrapper 'LXI\s\+SP,\s*'      contains=intel8080OPCode,intel8080Register16Bit,intel8080SpecialSymbol nextgroup=intel8080ImplicitInput
+syn match intel8080OPCode32wrapper 'STA\s\+'            contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCode33wrapper 'INX\s\+SP'          contains=intel8080OPCode,intel8080Register16Bit
+syn match intel8080OPCode34wrapper 'INR\s\+M'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode35wrapper 'DCR\s\+M'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode36wrapper 'MVI\s\+M,\s*'       contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol nextgroup=intel8080ImplicitInput
+syn match intel8080OPCode37wrapper 'STC'                contains=intel8080OPCode
+"syn match intel8080OPCode38wrapper '*NOP'               contains=intel8080OPCode
+syn match intel8080OPCode39wrapper 'DAD\s\+SP'          contains=intel8080OPCode,intel8080Register16Bit
+syn match intel8080OPCode3Awrapper 'LDA\s\+'            contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCode3Bwrapper 'DCX\s\+SP'          contains=intel8080OPCode,intel8080Register16Bit
+syn match intel8080OPCode3Cwrapper 'INR\s\+A'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode3Dwrapper 'DCR\s\+A'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode3Ewrapper 'MVI\s\+A,\s*'       contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol nextgroup=intel8080ImplicitInput
+syn match intel8080OPCode3Fwrapper 'CMC'                contains=intel8080OPCode
 
-syn match instruction50 'MOV\s\+D,\s*B'      contains=inst,reg8,symbols
-syn match instruction51 'MOV\s\+D,\s*C'      contains=inst,reg8,symbols
-syn match instruction52 'MOV\s\+D,\s*D'      contains=inst,reg8,symbols
-syn match instruction53 'MOV\s\+D,\s*E'      contains=inst,reg8,symbols
-syn match instruction54 'MOV\s\+D,\s*H'      contains=inst,reg8,symbols
-syn match instruction55 'MOV\s\+D,\s*L'      contains=inst,reg8,symbols
-syn match instruction56 'MOV\s\+D,\s*M'      contains=inst,reg8,symbols
-syn match instruction57 'MOV\s\+D,\s*A'      contains=inst,reg8,symbols
-syn match instruction58 'MOV\s\+E,\s*B'      contains=inst,reg8,symbols
-syn match instruction59 'MOV\s\+E,\s*C'      contains=inst,reg8,symbols
-syn match instruction5A 'MOV\s\+E,\s*D'      contains=inst,reg8,symbols
-syn match instruction5B 'MOV\s\+E,\s*E'      contains=inst,reg8,symbols
-syn match instruction5C 'MOV\s\+E,\s*H'      contains=inst,reg8,symbols
-syn match instruction5D 'MOV\s\+E,\s*L'      contains=inst,reg8,symbols
-syn match instruction5E 'MOV\s\+E,\s*M'      contains=inst,reg8,symbols
-syn match instruction5F 'MOV\s\+E,\s*A'      contains=inst,reg8,symbols
+syn match intel8080OPCode40wrapper 'MOV\s\+B,\s*B'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode41wrapper 'MOV\s\+B,\s*C'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode42wrapper 'MOV\s\+B,\s*D'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode43wrapper 'MOV\s\+B,\s*E'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode44wrapper 'MOV\s\+B,\s*H'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode45wrapper 'MOV\s\+B,\s*L'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode46wrapper 'MOV\s\+B,\s*M'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode47wrapper 'MOV\s\+B,\s*A'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode48wrapper 'MOV\s\+C,\s*B'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode49wrapper 'MOV\s\+C,\s*C'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode4Awrapper 'MOV\s\+C,\s*D'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode4Bwrapper 'MOV\s\+C,\s*E'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode4Cwrapper 'MOV\s\+C,\s*H'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode4Dwrapper 'MOV\s\+C,\s*L'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode4Ewrapper 'MOV\s\+C,\s*M'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode4Fwrapper 'MOV\s\+C,\s*A'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
 
-syn match instruction60 'MOV\s\+H,\s*B'      contains=inst,reg8,symbols
-syn match instruction61 'MOV\s\+H,\s*C'      contains=inst,reg8,symbols
-syn match instruction62 'MOV\s\+H,\s*D'      contains=inst,reg8,symbols
-syn match instruction63 'MOV\s\+H,\s*E'      contains=inst,reg8,symbols
-syn match instruction64 'MOV\s\+H,\s*H'      contains=inst,reg8,symbols
-syn match instruction65 'MOV\s\+H,\s*L'      contains=inst,reg8,symbols
-syn match instruction66 'MOV\s\+H,\s*M'      contains=inst,reg8,symbols
-syn match instruction67 'MOV\s\+H,\s*A'      contains=inst,reg8,symbols
-syn match instruction68 'MOV\s\+L,\s*B'      contains=inst,reg8,symbols
-syn match instruction69 'MOV\s\+L,\s*C'      contains=inst,reg8,symbols
-syn match instruction6A 'MOV\s\+L,\s*D'      contains=inst,reg8,symbols
-syn match instruction6B 'MOV\s\+L,\s*E'      contains=inst,reg8,symbols
-syn match instruction6C 'MOV\s\+L,\s*H'      contains=inst,reg8,symbols
-syn match instruction6D 'MOV\s\+L,\s*L'      contains=inst,reg8,symbols
-syn match instruction6E 'MOV\s\+L,\s*M'      contains=inst,reg8,symbols
-syn match instruction6F 'MOV\s\+L,\s*A'      contains=inst,reg8,symbols
+syn match intel8080OPCode50wrapper 'MOV\s\+D,\s*B'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode51wrapper 'MOV\s\+D,\s*C'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode52wrapper 'MOV\s\+D,\s*D'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode53wrapper 'MOV\s\+D,\s*E'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode54wrapper 'MOV\s\+D,\s*H'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode55wrapper 'MOV\s\+D,\s*L'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode56wrapper 'MOV\s\+D,\s*M'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode57wrapper 'MOV\s\+D,\s*A'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode58wrapper 'MOV\s\+E,\s*B'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode59wrapper 'MOV\s\+E,\s*C'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode5Awrapper 'MOV\s\+E,\s*D'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode5Bwrapper 'MOV\s\+E,\s*E'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode5Cwrapper 'MOV\s\+E,\s*H'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode5Dwrapper 'MOV\s\+E,\s*L'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode5Ewrapper 'MOV\s\+E,\s*M'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode5Fwrapper 'MOV\s\+E,\s*A'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
 
-syn match instruction70 'MOV\s\+M,\s*B'      contains=inst,reg8,symbols
-syn match instruction71 'MOV\s\+M,\s*C'      contains=inst,reg8,symbols
-syn match instruction72 'MOV\s\+M,\s*D'      contains=inst,reg8,symbols
-syn match instruction73 'MOV\s\+M,\s*E'      contains=inst,reg8,symbols
-syn match instruction74 'MOV\s\+M,\s*H'      contains=inst,reg8,symbols
-syn match instruction75 'MOV\s\+M,\s*L'      contains=inst,reg8,symbols
-syn match instruction76 'HLT'                contains=inst
-syn match instruction77 'MOV\s\+M,\s*A'      contains=inst,reg8,symbols
-syn match instruction78 'MOV\s\+A,\s*B'      contains=inst,reg8,symbols
-syn match instruction79 'MOV\s\+A,\s*C'      contains=inst,reg8,symbols
-syn match instruction7A 'MOV\s\+A,\s*D'      contains=inst,reg8,symbols
-syn match instruction7B 'MOV\s\+A,\s*E'      contains=inst,reg8,symbols
-syn match instruction7C 'MOV\s\+A,\s*H'      contains=inst,reg8,symbols
-syn match instruction7D 'MOV\s\+A,\s*L'      contains=inst,reg8,symbols
-syn match instruction7E 'MOV\s\+A,\s*M'      contains=inst,reg8,symbols
-syn match instruction7F 'MOV\s\+A,\s*A'      contains=inst,reg8,symbols
+syn match intel8080OPCode60wrapper 'MOV\s\+H,\s*B'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode61wrapper 'MOV\s\+H,\s*C'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode62wrapper 'MOV\s\+H,\s*D'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode63wrapper 'MOV\s\+H,\s*E'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode64wrapper 'MOV\s\+H,\s*H'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode65wrapper 'MOV\s\+H,\s*L'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode66wrapper 'MOV\s\+H,\s*M'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode67wrapper 'MOV\s\+H,\s*A'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode68wrapper 'MOV\s\+L,\s*B'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode69wrapper 'MOV\s\+L,\s*C'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode6Awrapper 'MOV\s\+L,\s*D'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode6Bwrapper 'MOV\s\+L,\s*E'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode6Cwrapper 'MOV\s\+L,\s*H'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode6Dwrapper 'MOV\s\+L,\s*L'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode6Ewrapper 'MOV\s\+L,\s*M'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode6Fwrapper 'MOV\s\+L,\s*A'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
 
-syn match instruction80 'ADD\s\+B'           contains=inst,reg8
-syn match instruction81 'ADD\s\+C'           contains=inst,reg8
-syn match instruction82 'ADD\s\+D'           contains=inst,reg8
-syn match instruction83 'ADD\s\+E'           contains=inst,reg8
-syn match instruction84 'ADD\s\+H'           contains=inst,reg8
-syn match instruction85 'ADD\s\+L'           contains=inst,reg8
-syn match instruction86 'ADD\s\+M'           contains=inst,reg8
-syn match instruction87 'ADD\s\+A'           contains=inst,reg8
-syn match instruction88 'ADC\s\+B'           contains=inst,reg8
-syn match instruction89 'ADC\s\+C'           contains=inst,reg8
-syn match instruction8A 'ADC\s\+D'           contains=inst,reg8
-syn match instruction8B 'ADC\s\+E'           contains=inst,reg8
-syn match instruction8C 'ADC\s\+H'           contains=inst,reg8
-syn match instruction8D 'ADC\s\+L'           contains=inst,reg8
-syn match instruction8E 'ADC\s\+M'           contains=inst,reg8
-syn match instruction8F 'ADC\s\+A'           contains=inst,reg8
+syn match intel8080OPCode70wrapper 'MOV\s\+M,\s*B'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode71wrapper 'MOV\s\+M,\s*C'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode72wrapper 'MOV\s\+M,\s*D'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode73wrapper 'MOV\s\+M,\s*E'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode74wrapper 'MOV\s\+M,\s*H'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode75wrapper 'MOV\s\+M,\s*L'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode76wrapper 'HLT'                contains=intel8080OPCode
+syn match intel8080OPCode77wrapper 'MOV\s\+M,\s*A'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode78wrapper 'MOV\s\+A,\s*B'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode79wrapper 'MOV\s\+A,\s*C'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode7Awrapper 'MOV\s\+A,\s*D'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode7Bwrapper 'MOV\s\+A,\s*E'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode7Cwrapper 'MOV\s\+A,\s*H'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode7Dwrapper 'MOV\s\+A,\s*L'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode7Ewrapper 'MOV\s\+A,\s*M'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
+syn match intel8080OPCode7Fwrapper 'MOV\s\+A,\s*A'      contains=intel8080OPCode,intel8080Register8Bit,intel8080SpecialSymbol
 
-syn match instruction90 'SUB\s\+B'           contains=inst,reg8
-syn match instruction91 'SUB\s\+C'           contains=inst,reg8
-syn match instruction92 'SUB\s\+D'           contains=inst,reg8
-syn match instruction93 'SUB\s\+E'           contains=inst,reg8
-syn match instruction94 'SUB\s\+H'           contains=inst,reg8
-syn match instruction95 'SUB\s\+L'           contains=inst,reg8
-syn match instruction96 'SUB\s\+M'           contains=inst,reg8
-syn match instruction97 'SUB\s\+A'           contains=inst,reg8
-syn match instruction98 'SBB\s\+B'           contains=inst,reg8
-syn match instruction99 'SBB\s\+C'           contains=inst,reg8
-syn match instruction9A 'SBB\s\+D'           contains=inst,reg8
-syn match instruction9B 'SBB\s\+E'           contains=inst,reg8
-syn match instruction9C 'SBB\s\+H'           contains=inst,reg8
-syn match instruction9D 'SBB\s\+L'           contains=inst,reg8
-syn match instruction9E 'SBB\s\+M'           contains=inst,reg8
-syn match instruction9F 'SBB\s\+A'           contains=inst,reg8
+syn match intel8080OPCode80wrapper 'ADD\s\+B'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode81wrapper 'ADD\s\+C'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode82wrapper 'ADD\s\+D'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode83wrapper 'ADD\s\+E'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode84wrapper 'ADD\s\+H'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode85wrapper 'ADD\s\+L'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode86wrapper 'ADD\s\+M'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode87wrapper 'ADD\s\+A'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode88wrapper 'ADC\s\+B'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode89wrapper 'ADC\s\+C'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode8Awrapper 'ADC\s\+D'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode8Bwrapper 'ADC\s\+E'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode8Cwrapper 'ADC\s\+H'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode8Dwrapper 'ADC\s\+L'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode8Ewrapper 'ADC\s\+M'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode8Fwrapper 'ADC\s\+A'           contains=intel8080OPCode,intel8080Register8Bit
 
-syn match instructionA0 'ANA\s\+B'           contains=inst,reg8
-syn match instructionA1 'ANA\s\+C'           contains=inst,reg8
-syn match instructionA2 'ANA\s\+D'           contains=inst,reg8
-syn match instructionA3 'ANA\s\+E'           contains=inst,reg8
-syn match instructionA6 'ANA\s\+M'           contains=inst,reg8
-syn match instructionA7 'ANA\s\+A'           contains=inst,reg8
-syn match instructionA8 'XRA\s\+B'           contains=inst,reg8
-syn match instructionA9 'XRA\s\+C'           contains=inst,reg8
-syn match instructionAA 'XRA\s\+D'           contains=inst,reg8
-syn match instructionAB 'XRA\s\+E'           contains=inst,reg8
-syn match instructionAC 'XRA\s\+H'           contains=inst,reg8
-syn match instructionAD 'XRA\s\+L'           contains=inst,reg8
-syn match instructionAE 'XRA\s\+M'           contains=inst,reg8
-syn match instructionAF 'XRA\s\+A'           contains=inst,reg8
+syn match intel8080OPCode90wrapper 'SUB\s\+B'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode91wrapper 'SUB\s\+C'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode92wrapper 'SUB\s\+D'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode93wrapper 'SUB\s\+E'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode94wrapper 'SUB\s\+H'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode95wrapper 'SUB\s\+L'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode96wrapper 'SUB\s\+M'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode97wrapper 'SUB\s\+A'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode98wrapper 'SBB\s\+B'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode99wrapper 'SBB\s\+C'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode9Awrapper 'SBB\s\+D'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode9Bwrapper 'SBB\s\+E'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode9Cwrapper 'SBB\s\+H'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode9Dwrapper 'SBB\s\+L'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode9Ewrapper 'SBB\s\+M'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCode9Fwrapper 'SBB\s\+A'           contains=intel8080OPCode,intel8080Register8Bit
 
-syn match instructionB0 'ORA\s\+B'           contains=inst,reg8
-syn match instructionB1 'ORA\s\+C'           contains=inst,reg8
-syn match instructionB2 'ORA\s\+D'           contains=inst,reg8
-syn match instructionB3 'ORA\s\+E'           contains=inst,reg8
-syn match instructionB4 'ORA\s\+H'           contains=inst,reg8
-syn match instructionB5 'ORA\s\+L'           contains=inst,reg8
-syn match instructionB6 'ORA\s\+M'           contains=inst,reg8
-syn match instructionB7 'ORA\s\+A'           contains=inst,reg8
-syn match instructionB8 'CMP\s\+B'           contains=inst,reg8
-syn match instructionB9 'CMP\s\+C'           contains=inst,reg8
-syn match instructionBA 'CMP\s\+D'           contains=inst,reg8
-syn match instructionBB 'CMP\s\+E'           contains=inst,reg8
-syn match instructionBC 'CMP\s\+H'           contains=inst,reg8
-syn match instructionBD 'CMP\s\+L'           contains=inst,reg8
-syn match instructionBE 'CMP\s\+M'           contains=inst,reg8
-syn match instructionBF 'CMP\s\+A'           contains=inst,reg8
+syn match intel8080OPCodeA0wrapper 'ANA\s\+B'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeA1wrapper 'ANA\s\+C'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeA2wrapper 'ANA\s\+D'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeA3wrapper 'ANA\s\+E'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeA6wrapper 'ANA\s\+M'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeA7wrapper 'ANA\s\+A'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeA8wrapper 'XRA\s\+B'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeA9wrapper 'XRA\s\+C'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeAAwrapper 'XRA\s\+D'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeABwrapper 'XRA\s\+E'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeACwrapper 'XRA\s\+H'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeADwrapper 'XRA\s\+L'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeAEwrapper 'XRA\s\+M'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeAFwrapper 'XRA\s\+A'           contains=intel8080OPCode,intel8080Register8Bit
 
-syn match instructionC0 'RNZ'                contains=inst
-syn match instructionC1 'POP\s\+B'           contains=inst,regstack
-syn match instructionC2 'JNZ\s\+'            contains=inst nextgroup=input
-syn match instructionC3 'JMP\s\+'            contains=inst nextgroup=input
-syn match instructionC4 'CNZ\s\+'            contains=inst nextgroup=input
-syn match instructionC5 'PUSH\s\+B'          contains=inst,regstack
-syn match instructionC6 'ADI\s\+'            contains=inst nextgroup=input
-"syn match instructionC7 'RST\s\+0'           contains=inst,numberWrapper
-syn match instructionC8 'RZ'                 contains=inst
-syn match instructionC9 'RET'                contains=inst
-syn match instructionCA 'JZ\s\+'             contains=inst nextgroup=input
-"syn match instructionCB '*JMP '              contains=inst nextgroup=input
-syn match instructionCC 'CZ\s\+'             contains=inst nextgroup=input
-syn match instructionCD 'CALL\s\+'           contains=inst nextgroup=input
-syn match instructionCE 'ACI\s\+'            contains=inst nextgroup=input
-"syn match instructionCF 'RST\s\+1'           contains=inst,numberWrapper
+syn match intel8080OPCodeB0wrapper 'ORA\s\+B'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeB1wrapper 'ORA\s\+C'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeB2wrapper 'ORA\s\+D'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeB3wrapper 'ORA\s\+E'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeB4wrapper 'ORA\s\+H'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeB5wrapper 'ORA\s\+L'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeB6wrapper 'ORA\s\+M'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeB7wrapper 'ORA\s\+A'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeB8wrapper 'CMP\s\+B'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeB9wrapper 'CMP\s\+C'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeBAwrapper 'CMP\s\+D'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeBBwrapper 'CMP\s\+E'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeBCwrapper 'CMP\s\+H'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeBDwrapper 'CMP\s\+L'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeBEwrapper 'CMP\s\+M'           contains=intel8080OPCode,intel8080Register8Bit
+syn match intel8080OPCodeBFwrapper 'CMP\s\+A'           contains=intel8080OPCode,intel8080Register8Bit
 
-syn match instructionD0 'RNC'                contains=inst
-syn match instructionD1 'POP\s\+D'           contains=inst,regstack
-syn match instructionD2 'JNC\s\+'            contains=inst nextgroup=input
-syn match instructionD3 'OUT\s\+'            contains=inst nextgroup=input
-syn match instructionD4 'CNC\s\+'            contains=inst nextgroup=input
-syn match instructionD5 'PUSH\s\+D'          contains=inst,regstack
-syn match instructionD6 'SUI\s\+'            contains=inst nextgroup=input
-"syn match instructionD7 'RST\s\+2'           contains=inst,numberWrapper
-syn match instructionD8 'RC'                 contains=inst
-"syn match instructionD9 '*RET'               contains=inst
-syn match instructionDA 'JC\s\+'             contains=inst nextgroup=input
-syn match instructionDB 'IN\s\+'             contains=inst nextgroup=input
-syn match instructionDC 'CC\s\+'             contains=inst nextgroup=input
-"syn match instructionDD '*CALL '             contains=inst nextgroup=input
-syn match instructionDE 'SBI\s\+'            contains=inst nextgroup=input
-"syn match instructionDF 'RST\s\+3'           contains=inst,numberWrapper
+syn match intel8080OPCodeC0wrapper 'RNZ'                contains=intel8080OPCode
+syn match intel8080OPCodeC1wrapper 'POP\s\+B'           contains=intel8080OPCode,intel8080RegisterStack
+syn match intel8080OPCodeC2wrapper 'JNZ\s\+'            contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeC3wrapper 'JMP\s\+'            contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeC4wrapper 'CNZ\s\+'            contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeC5wrapper 'PUSH\s\+B'          contains=intel8080OPCode,intel8080RegisterStack
+syn match intel8080OPCodeC6wrapper 'ADI\s\+'            contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+"syn match intel8080OPCodeC7wrapper 'RST\s\+0'           contains=intel8080OPCode,intel8080NumberWrapper
+syn match intel8080OPCodeC8wrapper 'RZ'                 contains=intel8080OPCode
+syn match intel8080OPCodeC9wrapper 'RET'                contains=intel8080OPCode
+syn match intel8080OPCodeCAwrapper 'JZ\s\+'             contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+"syn match intel8080OPCodeCBwrapper '*JMP '              contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeCCwrapper 'CZ\s\+'             contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeCDwrapper 'CALL\s\+'           contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeCEwrapper 'ACI\s\+'            contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+"syn match intel8080OPCodeCFwrapper 'RST\s\+1'           contains=intel8080OPCode,intel8080NumberWrapper
 
-syn match instructionE0 'RPO'                contains=inst
-syn match instructionE1 'POP\s\+H'           contains=inst,regstack
-syn match instructionE2 'JP\s\+'             contains=inst nextgroup=input
-syn match instructionE3 'JPO\s\+'            contains=inst nextgroup=input
-syn match instructionE4 'XTHL'               contains=inst
-syn match instructionE5 'CPO\s\+'            contains=inst nextgroup=input
-syn match instructionE6 'PUSH\s\+H'          contains=inst,regstack
-syn match instructionE7 'ANI\s\+'            contains=inst nextgroup=input
-"syn match instructionE8 'RST\s\+4'           contains=inst,numberWrapper
-syn match instructionE9 'RPE'                contains=inst
-syn match instructionEA 'PCHL'               contains=inst
-syn match instructionEB 'XCHG'               contains=inst
-syn match instructionEC 'CPE\s\+'            contains=inst nextgroup=input
-"syn match instructionED '*CALL '             contains=inst nextgroup=input
-syn match instructionEE 'XRI\s\+'            contains=inst nextgroup=input
-"syn match instructionEF 'RST\s\+5'           contains=inst,numberWrapper
+syn match intel8080OPCodeD0wrapper 'RNC'                contains=intel8080OPCode
+syn match intel8080OPCodeD1wrapper 'POP\s\+D'           contains=intel8080OPCode,intel8080RegisterStack
+syn match intel8080OPCodeD2wrapper 'JNC\s\+'            contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeD3wrapper 'OUT\s\+'            contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeD4wrapper 'CNC\s\+'            contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeD5wrapper 'PUSH\s\+D'          contains=intel8080OPCode,intel8080RegisterStack
+syn match intel8080OPCodeD6wrapper 'SUI\s\+'            contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+"syn match intel8080OPCodeD7wrapper 'RST\s\+2'           contains=intel8080OPCode,intel8080NumberWrapper
+syn match intel8080OPCodeD8wrapper 'RC'                 contains=intel8080OPCode
+"syn match intel8080OPCodeD9wrapper '*RET'               contains=intel8080OPCode
+syn match intel8080OPCodeDAwrapper 'JC\s\+'             contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeDBwrapper 'IN\s\+'             contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeDCwrapper 'CC\s\+'             contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+"syn match intel8080OPCodeDDwrapper '*CALL '             contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeDEwrapper 'SBI\s\+'            contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+"syn match intel8080OPCodeDFwrapper 'RST\s\+3'           contains=intel8080OPCode,intel8080NumberWrapper
 
-syn match instructionF0 'RP'                 contains=inst
-syn match instructionF1 'POP\s\+PSW'         contains=inst,regstack
-syn match instructionF2 'JP\s\+'             contains=inst nextgroup=input
-syn match instructionF3 'DI'                 contains=inst
-syn match instructionF4 'CP\s\+'             contains=inst nextgroup=input
-syn match instructionF5 'PUSH\s\+PSW'        contains=inst,regstack
-syn match instructionF6 'ORI\s\+'            contains=inst nextgroup=input
-"syn match instructionF7 'RST\s\+6'           contains=inst,numberWrapper
-syn match instructionF8 'RM'                 contains=inst
-syn match instructionF9 'SPHL'               contains=inst
-syn match instructionFA 'JM\s\+'             contains=inst nextgroup=input
-syn match instructionFB 'EI'                 contains=inst
-syn match instructionFC 'CM\s\+'             contains=inst nextgroup=input
-"syn match instructionFD '*CALL '             contains=inst nextgroup=input
-syn match instructionFE 'CPI\s\+'            contains=inst nextgroup=input
-"syn match instructionFF 'RST\s\+7'           contains=inst,numberWrapper
-syn match instructionRST 'RST\s\+'           contains=inst nextgroup=input
+syn match intel8080OPCodeE0wrapper 'RPO'                contains=intel8080OPCode
+syn match intel8080OPCodeE1wrapper 'POP\s\+H'           contains=intel8080OPCode,intel8080RegisterStack
+syn match intel8080OPCodeE2wrapper 'JP\s\+'             contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeE3wrapper 'JPO\s\+'            contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeE4wrapper 'XTHL'               contains=intel8080OPCode
+syn match intel8080OPCodeE5wrapper 'CPO\s\+'            contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeE6wrapper 'PUSH\s\+H'          contains=intel8080OPCode,intel8080RegisterStack
+syn match intel8080OPCodeE7wrapper 'ANI\s\+'            contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+"syn match intel8080OPCodeE8wrapper 'RST\s\+4'           contains=intel8080OPCode,intel8080NumberWrapper
+syn match intel8080OPCodeE9wrapper 'RPE'                contains=intel8080OPCode
+syn match intel8080OPCodeEAwrapper 'PCHL'               contains=intel8080OPCode
+syn match intel8080OPCodeEBwrapper 'XCHG'               contains=intel8080OPCode
+syn match intel8080OPCodeECwrapper 'CPE\s\+'            contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+"syn match intel8080OPCodeEDwrapper '*CALL '             contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeEEwrapper 'XRI\s\+'            contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+"syn match intel8080OPCodeEFwrapper 'RST\s\+5'           contains=intel8080OPCode,intel8080NumberWrapper
+
+syn match intel8080OPCodeF0wrapper 'RP'                 contains=intel8080OPCode
+syn match intel8080OPCodeF1wrapper 'POP\s\+PSW'         contains=intel8080OPCode,intel8080RegisterStack
+syn match intel8080OPCodeF2wrapper 'JP\s\+'             contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeF3wrapper 'DI'                 contains=intel8080OPCode
+syn match intel8080OPCodeF4wrapper 'CP\s\+'             contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeF5wrapper 'PUSH\s\+PSW'        contains=intel8080OPCode,intel8080RegisterStack
+syn match intel8080OPCodeF6wrapper 'ORI\s\+'            contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+"syn match intel8080OPCodeF7wrapper 'RST\s\+6'           contains=intel8080OPCode,intel8080NumberWrapper
+syn match intel8080OPCodeF8wrapper 'RM'                 contains=intel8080OPCode
+syn match intel8080OPCodeF9wrapper 'SPHL'               contains=intel8080OPCode
+syn match intel8080OPCodeFAwrapper 'JM\s\+'             contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeFBwrapper 'EI'                 contains=intel8080OPCode
+syn match intel8080OPCodeFCwrapper 'CM\s\+'             contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+"syn match intel8080OPCodeFDwrapper '*CALL '             contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+syn match intel8080OPCodeFEwrapper 'CPI\s\+'            contains=intel8080OPCode nextgroup=intel8080ImplicitInput
+"syn match intel8080OPCodeFFwrapper 'RST\s\+7'           contains=intel8080OPCode,intel8080NumberWrapper
+"
+syn match intel8080OPCodeRSTwrapper 'RST\s\+'           contains=intel8080OPCode nextgroup=intel8080ImplicitInput
 
 " Random Symbols
 
 " Comments
-syn match commentStyle1 ';.*$' 
-syn match commentStyle1 '^\*.*$' 
+syn match intel8080CommentStyle1 ';.*$' 
+syn match intel8080CommentStyle2 '\(!\|^\)\*.*$' 
 
 "syn match labeldef '\(\a\|\d\|$\)\+:\=' contained
 
 " numbers
-"syn match numberWrapper '\(\x\|\$\)\+[BOQHD]\=' contained contains=numBin,numHex,numOct,numDec
-syn match numberWrapper '\(\a\|\$\)\@<!\(\d\(\x\|\$\)*[BOQHD]\=\)\(\a\|\$\)\@!' contained contains=numBin,numHex,numOct,numDec,symbols
-syn match numDec '\d\(\d\|\$\)*D\=' contained
-syn match numHex '0\(\x\|\$\)*H' contained
-syn match numOct '0\(\o\|\$\)*[OQ]' contained
-syn match numBin '0\([01]\|\$\)*B' contained
+"syn match intel8080NumberWrapper '\(\x\|\$\)\+[BOQHD]\=' contained contains=intel8080NumberBinary,intel8080NumberHexadecimal,intel8080NumberOctal,intel8080NumberDecimal
+syn match intel8080NumberWrapper '\(\a\|\$\)\@<!\(\d\(\x\|\$\)*[BOQHD]\=\)\(\a\|\$\)\@!' contained contains=intel8080NumberBinary,intel8080NumberHexadecimal,intel8080NumberOctal,intel8080NumberDecimal,intel8080SpecialSymbol
+syn match intel8080NumberDecimal     '\d\(\d\|\$\)*D\=' contained
+syn match intel8080NumberHexadecimal '0\(\x\|\$\)*H'    contained
+syn match intel8080NumberOctal       '0\(\o\|\$\)*[OQ]' contained
+syn match intel8080NumberBinary      '0\([01]\|\$\)*B'  contained
 
 " String
-syn region string start='\'' end='\'' contained
+syn region intel8080CharacterArray start='\'' end='\'' contained
 
 " Directives
-syn keyword directive ORG END IF ENDIF EQU SET DB DW DS contained
-syn match dirDefine 'D[BWS]\s\+' contains=directive nextgroup=input
-syn match dirOrigin 'ORG\s\+' contains=directive nextgroup=input
-syn match dirEnd 'END\($\|\s\+\)' contains=directive nextgroup=input
-syn match dirConstant_step1 '\(\d\|\a\|\$\)\+\(:\=\s*\|\s\+\)\(EQU\|SET\)[^;!\n]\+' contains=dirConstant_step2,symbols
-syn match dirConstant_step2 '\(\s\|:\)\(EQU\|SET\)\s\+' contained contains=directive nextgroup=input
+syn keyword intel8080AssemblerDirective ORG END IF ENDIF EQU SET DB DW DS contained
+syn match intel8080DefineData 'D[BWS]\s\+'     contains=intel8080AssemblerDirective nextgroup=intel8080ImplicitInput
+syn match intel8080SetOrigin  'ORG\s\+'        contains=intel8080AssemblerDirective nextgroup=intel8080ImplicitInput
+syn match intel8080SetEnd     'END\($\|\s\+\)' contains=intel8080AssemblerDirective nextgroup=intel8080ImplicitInput
+syn match intel8080ConstantWrapper '\(\d\|\a\|\$\)\+\(:\=\s*\|\s\+\)\(EQU\|SET\)[^;!\n]\+' contains=intel8080Constant,intel8080SpecialSymbol
+syn match intel8080Constant '\(\s\|:\)\(EQU\|SET\)\s\+' contained contains=intel8080AssemblerDirective nextgroup=intel8080ImplicitInput
 
 
 
 " input
-syn match input '[^;!\n]\+' contained contains=numberWrapper,string,symbols
+syn match intel8080ImplicitInput '[^;!\n]\+' contained contains=intel8080NumberWrapper,intel8080CharacterArray,intel8080SpecialSymbol
 
-syn match symbols '[\$,:!]'
+syn match intel8080SpecialSymbol '[\$,:!]'
 
-"hi link labeldef Label
+hi link intel8080AssemblerDirective  Macro
+hi link intel8080OPCode              Statement
 
-hi link inst Statement
+hi link intel8080Register       Constant
+hi link intel8080Register8Bit   intel8080Register
+hi link intel8080Register16Bit  intel8080Register
+hi link intel8080RegisterStack  intel8080Register
 
-hi link reg8 Constant
-hi link reg16 Constant 
-hi link regstack Constant
+hi link intel8080Number             Number
+hi link intel8080NumberBinary       intel8080Number
+hi link intel8080NumberOctal        intel8080Number 
+hi link intel8080NumberHexadecimal  intel8080Number 
+hi link intel8080NumberDecimal      intel8080Number 
 
-hi link numBin Number
-hi link numOct Number
-hi link numHex Number
-hi link numDec Number
+hi link intel8080CharacterArray  String
 
-hi link string String
+hi link intel8080SpecialSymbol   Special
 
-hi link symbols Special
+hi link intel8080Comment        Comment
+hi link intel8080CommentStyle1  intel8080Comment
+hi link intel8080CommentStyle2  intel8080Comment
 
-hi link commentStyle1 Comment
-hi link commentStyle2 Commwnt
 
-hi link directive Macro
 
