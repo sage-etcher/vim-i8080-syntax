@@ -314,14 +314,15 @@ syn match commentStyle1 '^\*.*$'
 "syn match labeldef '\(\a\|\d\|$\)\+:\=' contained
 
 " numbers
-syn match numberWrapper '\(\x\|\$\)\+[BOQHD]\=' contained contains=numBin,numHex,numOct,numDec
-syn match numDec '\d\(\d\|\$\)*\($\|D\)' contained
+"syn match numberWrapper '\(\x\|\$\)\+[BOQHD]\=' contained contains=numBin,numHex,numOct,numDec
+syn match numberWrapper '\(\a\|\$\)\@<!\(\d\(\x\|\$\)*[BOQHD]\=\)\(\a\|\$\)\@!' contained contains=numBin,numHex,numOct,numDec,symbols
+syn match numDec '\d\(\d\|\$\)*D\=' contained
 syn match numHex '0\(\x\|\$\)*H' contained
 syn match numOct '0\(\o\|\$\)*[OQ]' contained
 syn match numBin '0\([01]\|\$\)*B' contained
 
 " String
-syn match string '\'.*\'' contained
+syn region string start='\'' end='\'' contained
 
 " Directives
 syn keyword directive ORG END IF ENDIF EQU SET DB DW DS contained
@@ -334,7 +335,7 @@ syn match dirConstant_step2 '\(\s\|:\)\(EQU\|SET\)\s\+' contained contains=direc
 
 
 " input
-syn match input '[^;!\n]\+' contained contains=symbols,string,numberWrapper
+syn match input '[^;!\n]\+' contained contains=numberWrapper,string,symbols
 
 syn match symbols '[\$,:!]'
 
