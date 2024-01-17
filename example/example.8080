@@ -1,0 +1,86 @@
+*This is an example program to demonstrate the intel 8080 syntax highlighting.
+*The program does practically nothing, and is for demonstration purposes only.
+
+
+* -- Constants --
+TPA		equ	0$0100h		;CP/M trasient program area
+BDOS		equ	0$0005h		;CP/M BDOS address
+BDOS$PCHAR	equ	0$02h		;BDOS print character procedure ID
+BDOS$PSTR	equ	0$09h		;BDOS print string procedure ID
+
+LF		equ	0$0Ah
+CR		equ	0$0Dh
+STR$TERM	equ	'$'
+
+STATUS$REG$1		equ	0$D0h		;i/o bus address
+DISPLAY$FLAG		equ	0$0000$0100B	;bit 2 is the display flag
+DISPLAY$FLAG$MASK	equ	NOT DISPLAY$FLAG
+
+* -- Initial Execution Point --
+	org	TPA
+	jmp	main			;goto the main code block
+
+* -- Data Section --
+
+display$f$msgs:				;string(char*) array 
+	dw	display$f$msgs$0	;index 0
+	dw	display$f$msgs$1	;index 1
+display$f$msgs$0:	db	'The display flag is set!',STR$TERM
+display$f$msgs$1:	db	'The display flag is not set!',STR$TERM
+display$f$msgs$size	equ	2
+
+* -- Code Section --
+main:	call	read$display$f		;read the status of the display flag
+	call	load$display$f$msg	;load the display flag message
+	call	print$line		;print the message to screen
+	;fall-through
+exit:	rst	0			;return control to CP/M
+	;fall-through
+halt:	hlt				;if exit fails, halt the system
+	jmp	halt			;if halt is bypassed loop forever
+
+read$display$f:
+	in	STATUS$REG$1		;get a byte from the status register
+	ani	DISPLAY$FLAG		;isolate the display flag bit
+	cpi	DISPLAY$FLAG		;check if the bit is set
+	ret
+
+load$display$f:
+	; zero-flag should be set accordingly
+	; zero-flag set == display flag on
+	; zero-flag not set == display flag off
+	jz	load$display$f$on	;load array index for on msg
+	jmp	load$display$f$off	;load array index for off msg
+load$display$f$on:
+	lxi	d,0*display$f$msgs$size	;array index 0
+	jmp	load$display$f$0	;continue exectutino
+load$display$f$off:
+	lxi	d,1*display$f$msgs$size	;array index 1
+	jmp	load$display$f$0	;continue exectutino
+load$display$f$0:
+	lxi	display$f$msgs		;string array address
+	dad	d			;add the array offset (de)
+	ret
+	
+crlf:
+	mvi	e,LF			;load the line-feed character
+	mvi	c,BDOS$PCHAR !call BDOS	;print the character
+
+	mvi	e,CR			;load the cartridge retrun character
+	mvi	c,BDOS$PCHAR !call BDOS	;print the character
+	ret
+
+print: 
+	;register de = string addr
+	mvi	c,BDOS$PST !call BDOS	;print the string
+	ret
+
+print$line:
+	;register de = string addr
+	call	print			;print the string
+	call	crlf			;print a newline
+	ret
+
+* -- Program End --
+	end	TPA
+
