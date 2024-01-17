@@ -38,7 +38,7 @@ ___Note:___ syntax highlighting automatically applies to all files with extensio
   
   This is what 8080 pnemonic'ed code looks like without a custom syntax file.
 
-  <img title="cpm-helloworld.8080 without plug-in" alt="Example of code without the plugin enabled" src="./images/cpm-helloworld-syntax-off.png">
+  <img title="cpm-helloworld.8080 without plug-in" alt="Example of code without the plugin enabled" src="./images/no-syntax.png">
 
 </details>
 <details>
@@ -48,7 +48,7 @@ ___Note:___ syntax highlighting automatically applies to all files with extensio
   
   However, if instead we use the supplied custom syntaxing files, we get a much more readable, pretty, and non-eyebleed display =D
 
-  <img title="cpm-helloworld.8080 with plug-in" alt="Example of code with the plugin enabled" src="./images/cpm-helloworld-syntax-on.png">
+  <img title="cpm-helloworld.8080 with plug-in" alt="Example of code with the plugin enabled" src="./images/with-the-plugin.png">
 
   Much better!
 
@@ -60,7 +60,7 @@ ___Note:___ syntax highlighting automatically applies to all files with extensio
   
   Standard `asm` file extension also doesn't quite work, being the stock highlighting for it is based on a much more modern assembly pnemonic. Here's and example of what it looks like aswell!
 
-  <img title="cpm-helloworld.asm without plug-in" alt="Example of code without the plugin enabled, as a dot asm file" src="./images/cpm-helloworld-asm-syntax-on.png">
+  <img title="cpm-helloworld.asm without plug-in" alt="Example of code without the plugin enabled, as a dot asm file" src="./images/default-highlight.png">
 
 </details>
 
@@ -68,7 +68,7 @@ ___Note:___ syntax highlighting automatically applies to all files with extensio
 
 This file is a part of the intel 8080 syntax highlighting plugin  
  
-Copyright 2023 Sage I. Hendricks  
+Copyright 2024 Sage I. Hendricks  
  
 Licensed under the Apache License, Version 2.0 (the "License");  
 you may not use this file except in compliance with the License.  
