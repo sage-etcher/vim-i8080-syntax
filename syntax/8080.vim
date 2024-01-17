@@ -65,11 +65,11 @@ syn match intel8080CommentStyle2 /\v(!|^)@<=\*.*$/
 " Pretty Coloring
 hi link intel8080AssemblerDirective  Define
 
-hi link intel8080PreProcMath         Operator
+hi link intel8080PreProcMath         PreProc
 hi link intel8080MathKeywords        intel8080PreProcMath
 hi link intel8080MathSymbols         intel8080PreProcMath
 
-hi link intel8080PreProcLogic        Operator
+hi link intel8080PreProcLogic        PreProc
 hi link intel8080LogicKeywords       intel8080PreProcLogic
 
 hi link intel8080OPCode              Statement
