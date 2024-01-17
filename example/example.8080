@@ -13,7 +13,7 @@ CR		equ	0$0Dh
 STR$TERM	equ	'$'
 
 STATUS$REG$1		equ	0$D0h		;i/o bus address
-DISPLAY$FLAG		equ	0$0000$0100B	;bit 2 is the display flag
+DISPLAY$FLAG		equ	0$0000$0100b	;bit 2 is the display flag
 DISPLAY$FLAG$MASK	equ	NOT DISPLAY$FLAG
 
 * -- Initial Execution Point --
@@ -52,11 +52,11 @@ load$display$f:
 	jz	load$display$f$on	;load array index for on msg
 	jmp	load$display$f$off	;load array index for off msg
 load$display$f$on:
-	lxi	d,0*display$f$msgs$size	;array index 0
-	jmp	load$display$f$0	;continue exectutino
+	lxi	d,0*display$f$msgs$size	;array offset for index 0
+	jmp	load$display$f$0	;continue exectution
 load$display$f$off:
-	lxi	d,1*display$f$msgs$size	;array index 1
-	jmp	load$display$f$0	;continue exectutino
+	lxi	d,1*display$f$msgs$size	;array offset for index 1
+	jmp	load$display$f$0	;continue exectution
 load$display$f$0:
 	lxi	display$f$msgs		;string array address
 	dad	d			;add the array offset (de)
@@ -66,7 +66,7 @@ crlf:
 	mvi	e,LF			;load the line-feed character
 	mvi	c,BDOS$PCHAR !call BDOS	;print the character
 
-	mvi	e,CR			;load the cartridge retrun character
+	mvi	e,CR			;load the cartridge return character
 	mvi	c,BDOS$PCHAR !call BDOS	;print the character
 	ret
 
