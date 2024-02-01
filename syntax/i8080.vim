@@ -20,7 +20,7 @@
 " Vim syntax file
 " Language: intel 8080 assembly pnemonics
 " Maintainer: Sage Hendricks
-" Latest Revision: Jan 17th 2024
+" Latest Revision: Feb 1st 2024
 
 if exists("b:current_syntax")
 	finish
