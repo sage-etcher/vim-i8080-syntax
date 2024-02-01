@@ -10,13 +10,10 @@ should be in this day and age!
 
 Install the plugin as a Vim 8 Package
 
-`$` as user  
-`#` as root  
-
 ``` bash
-\$ mkdir -pv ~/.vim/pack/*/start/
-\$ cd ~/.vim/pack/*/start
-\$ git clone https://github.com/sage-etcher/vim-i8080-syntax.git
+$ mkdir -pv ~/.vim/pack/sage-etcher/start
+$ cd ~/.vim/pack/sage-etcher/start
+$ git clone https://github.com/sage-etcher/vim-i8080-syntax.git
 ```
 
 ## Example
