@@ -1,8 +1,19 @@
 # Intel 8080 Syntax Hightlighting
 
-transforms 8080 assembly files from boring, plain files with no syntax
-hightlighting, to a wonderfully colourful, syntax highlighted file, as all code
-should be in this day and age!
+Gives intel 8080 mnemonic assembly propper syntax highlighting.
+
+## Example
+
+___Note:___ syntax highlighting is automatically applied to all files with
+an extension of either `.8080`, `.8080asm`, `.i8080`, or `.i8080asm`.
+
+![A side by side comparison of code, 1, with the plugin's highlighting, 2, with VIM's base assembly highlighting, and 3, with no highlighting.](./images/exampel-sidebyside.jpg)
+
+VIM's standard assembly highlighting was designed with x86/x64 mnemonics in
+mind, as such it doesn't work well with code written in intel 8080 mnemonics.
+Though it's much more time appropriate to use no syntax highlighting, I have
+to admit it much nicer to work with highlighting, and I'm confident you'll
+agree.
 
 ## Install
 
@@ -15,34 +26,6 @@ $ mkdir -pv ~/.vim/pack/sage-etcher/start
 $ cd ~/.vim/pack/sage-etcher/start
 $ git clone https://github.com/sage-etcher/vim-i8080-syntax.git
 ```
-
-## Example
-
-___Note:___ syntax highlighting automatically applies to all files with
-extension of `.8080`, `.8080asm`, `.i8080`, or `.i8080asm`
-
-### 8080 extension, no plug-in
-
-This is what 8080 pnemonic'ed code looks like without a custom syntax file.
-
-![A screenshot of intel 8080 code, without any syntax hightlighting.](./images/no-syntax.png)
-
-### 8080 extension, with plug-in
-
-However, if instead we use the supplied custom syntaxing files, we get a much
-more readable, pretty, and non-eyebleed display =D
-
-![A screenshot of intel 8080 code, with the plugin.](./images/with-the-plugin.png)
-
-Much better!
-
-### Standard asm extension
-
-Standard `asm` file extension also doesn't quite work, being the stock
-highlighting for it is based on a much more modern assembly pnemonic. Here's
-and example of what it looks like aswell!
-
-![A screenshot of intel 8080 code, without the plugin.](./images/default-highlight.png)
 
 ## License
 

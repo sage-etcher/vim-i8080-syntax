@@ -1,3 +1,19 @@
+02/01/2024 13:57 Sage I. Hendricks <sage.codes@email.com>
+
+	Updated the README.md file, and combined all 3 examples into 1 image.
+	Further, removed the old screenshots.
+	
+	* READEM.md: updated images, and moved structuring and wording around.
+	* images/example-sidebyside.jpg: added new combined photo, to replace old
+	one.
+	* images/cpm-helloworld-asm-syntax.png: removed old photo
+	* images/cpm-helloworld-syntax-off.png: removed old photo
+	* images/cpm-helloworld-syntax-on.png: removed old photo
+	* images/default-hightlight.png: removed old photo
+	* images/no-syntax.png: removed old photo
+	* images/with-the-plugin.png: removed old photo
+
+
 02/01/2024 11:20 Sage I. Hendricks <sage.codes@email.com>
 
 	Renamed the old syntax highlighting file to have a .vim extension for
