@@ -44,10 +44,10 @@ syn match intel8080Register /\v\c(\s|,)@<=(A|B|C|D|E|H|L|M|SP|PSW)(\s|,|;|!|$)@=
 syn match intel8080OPCode /\v\c(\s|:|!|^)@<=(MOV|LDAX|LDA|MVI|STA|STAX|LXI|LHLD|SHLD|SPHL|XCHG|XTHL|ADD|ADI|ADC|ACI|SUB|SUI|SBB|SBI|DAD|INR|DCR|INX|DCX|DI|EI|NOP|HLT|DAA|CMA|STC|CMC|RLC|RRC|RAL|RAR|ANA|ANI|XRA|XRI|ORA|ORI|CMP|CPI|JMP|JNZ|JZ|JNC|JC|JPO|JPE|JP|JM|PCHL|CALL|CNZ|CZ|CNC|CC|CPO|CPE|CP|CM|RET|RNZ|RZ|RNC|RC|RPO|RPE|RP|RM|RST|PUSH|POP|IN|OUT)(\s|!|;|$)@=/ nextgroup=intel8080SpecialSymbol,intel8080Register
 
 " Numbers
-syn match intel8080NumberDecimal     /\v\c(\s|[\-\+\*\/\(\),]|^)@<=\d(\d|\$)*D=(\s|[\-+\*\/\(\);!]|$)@=/
-syn match intel8080NumberHexadecimal /\v\c(\s|[\-\+\*\/\(\),]|^)@<=0(\x|\$)*H(\s|[\-+\*\/\(\);!]|$)@=/
-syn match intel8080NumberOctal       /\v\c(\s|[\-\+\*\/\(\),]|^)@<=0(\o|\$)*[OQ](\s|[\-+\*\/\(\);!]|$)@=/
-syn match intel8080NumberBinary      /\v\c(\s|[\-\+\*\/\(\),]|^)@<=0([01]|\$)*B(\s|[\-+\*\/\(\);!]|$)@=/
+syn match intel8080NumberDecimal     /\v\c(\s|[\-\+\*\/\(\),]|^)@<=\d(\d|\$)*D=(\s|[\-\+\*\/\(\),;!]|$)@=/
+syn match intel8080NumberHexadecimal /\v\c(\s|[\-\+\*\/\(\),]|^)@<=0(\x|\$)*H(\s|[\-\+\*\/\(\),;!]|$)@=/
+syn match intel8080NumberOctal       /\v\c(\s|[\-\+\*\/\(\),]|^)@<=0(\o|\$)*[OQ](\s|[\-\+\*\/\(\),;!]|$)@=/
+syn match intel8080NumberBinary      /\v\c(\s|[\-\+\*\/\(\),]|^)@<=0([01]|\$)*B(\s|[\-\+\*\/\(\),;!]|$)@=/
 
 " Strings
 "NOTE: intel8080 mnemonics do not include escape sequences in their "strings",
