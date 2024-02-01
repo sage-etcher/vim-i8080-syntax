@@ -2,12 +2,10 @@
 
 Gives intel 8080 mnemonic assembly propper syntax highlighting.
 
-## Example
-
 ___Note:___ syntax highlighting is automatically applied to all files with
 an extension of either `.8080`, `.8080asm`, `.i8080`, or `.i8080asm`.
 
-![A side by side comparison of code, 1, with the plugin's highlighting, 2, with VIM's base assembly highlighting, and 3, with no highlighting.](./images/exampel-sidebyside.jpg)
+![A side by side comparison of code, 1, with the plugin's highlighting, 2, with VIM's base assembly highlighting, and 3, with no highlighting.](./images/example-sidebyside.jpg)
 
 VIM's standard assembly highlighting was designed with x86/x64 mnemonics in
 mind, as such it doesn't work well with code written in intel 8080 mnemonics.
