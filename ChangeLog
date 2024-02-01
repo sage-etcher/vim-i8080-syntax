@@ -1,3 +1,29 @@
+02/01/2024 10:51 Sage I. Hendricks <sage.codes@email.com>
+
+	Fixed a few mistakes in the new regex and syntaxing.
+
+	* syntax/8080.vim: numbers with a trailing comma work now, also syntax.
+	* example/example.8080: minor changes to fix syntax inconsistancies.
+
+01/17/2024 Sage I. Hendricks <sage.codes@email.com>
+
+	Added new example .8080 file, and updated images in the README.md file.
+
+	* README.md: updated example images, and updated copyright year
+	* example/example.8080: added new example assembly file
+	* images/default-highlight.png: new example image #1
+	* images/no-syntax.png: new example image #2
+	* images/with-the-plugin.png: new example image #3
+
+01/14/2024 Sage I. Hendricks <sage.codes@email.com>
+
+	Completely re-wrote the 'syntax/8080.vim' file. Now uses lookaheads and
+	lookbehinds, and is overall more accurate!
+
+	* syntax/8080.vim: rewrote all regex
+	* syntax/8080.vim.bak: backed-up the old version
+	
+
 11/13/2023 09:06 Sage I. Hendricks <sage.codes@email.com>
 
 	Fixed a couple number highlighting issues, removed alternate hex 
