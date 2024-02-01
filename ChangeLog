@@ -1,3 +1,10 @@
+02/01/2024 11:20 Sage I. Hendricks <sage.codes@email.com>
+
+	Renamed the old syntax highlighting file to have a .vim extension for
+	GitHub hightlighting to work on it better.
+
+	* syntax/8080_legacy.vim: renamed from 'syntax/8080.vim.old'
+
 02/01/2024 11:03 Sage I. Hendricks <sage.codes@email.com>
 
 	Renamed the main regex file and changed filetype detection to use only 1
