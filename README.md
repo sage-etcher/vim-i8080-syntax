@@ -42,8 +42,8 @@ let g:directive_style = 'CPM'
 ```
 
 A list of possible directive styles currently supported is:
-|:----------------- |:------------------ |
 | g:directive_style | Assembler/Platform |
+|:----------------- |:------------------ |
 | `CPM` | CP/M'S ASM.COM Assembler |
 
 The list of supported directive styles is verry limmited at the moment, if
