@@ -13,9 +13,9 @@ agree.
 
 ![A side by side comparison of code, 1, with the plugin's highlighting, 2, with VIM's base assembly highlighting, and 3, with no highlighting.](./images/example-sidebyside.jpg)
 
-[Plugin Highlighting](./images/example-plugin.jpg) |
-[ASM Highlighting](./images/example-base-ASM.jpg) |
-[No Highlighting](./images/example-syntax-off.jpg) |
+[Plugin Highlighting](./images/example-plugin.jpg)  
+[ASM Highlighting](./images/example-base-ASM.jpg)  
+[No Highlighting](./images/example-syntax-off.jpg)  
 
 ## Install
 
