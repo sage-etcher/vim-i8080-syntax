@@ -6,10 +6,4 @@ from a root prompt (sudo)
 
    $ mkdir -pv ~/.vim/pack/*/start/
    $ cd ~/.vim/pack/*/start
-   $ git clone git@github.com:sage-etcher/vim-i8080-syntax.git
-
-     or
-
    $ git clone https://github.com/sage-etcher/vim-i8080-syntax.git
-
-
