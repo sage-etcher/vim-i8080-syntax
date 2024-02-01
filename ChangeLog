@@ -1,3 +1,14 @@
+02/01/2024 11:03 Sage I. Hendricks <sage.codes@email.com>
+
+	Renamed the main regex file and changed filetype detection to use only 1
+	file. Added detection for: '8080', '8080asm', 'i8080', and 'i8080asm'
+	extensions by default.
+
+	* syntax/i8080.vim: renamed 'syntax/8080.vim'
+	* ftdetect/8080.vim: removed in favor of using 'ftdetect/filetype.vim'
+	* ftdetect/filetype.vim: added lines for detecting other file extensions,
+	and a commented line for assuming all asm files.
+
 02/01/2024 10:51 Sage I. Hendricks <sage.codes@email.com>
 
 	Fixed a few mistakes in the new regex and syntaxing.

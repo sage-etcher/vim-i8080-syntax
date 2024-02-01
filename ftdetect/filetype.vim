@@ -16,4 +16,8 @@
 "  limitations under the License.
 "
 
-au BufRead,BufNewFile *.8080 setfiletype 8080
+"au BufRead,BufNewFile *.asm setfiletype i8080
+au BufRead,BufNewFile *.8080 setfiletype i8080
+au BufRead,BufNewFile *.8080asm setfiletype i8080
+au BufRead,BufNewFile *.i8080 setfiletype i8080
+au BufRead,BufNewFile *.i8080asm setfiletype i8080
