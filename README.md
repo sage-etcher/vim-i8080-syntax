@@ -30,6 +30,27 @@ $ cd ~/.vim/pack/sage-etcher/start
 $ git clone https://github.com/sage-etcher/vim-i8080-syntax.git
 ```
 
+## Configuration
+
+Assembler directives will vary depending on platform and assembler, the
+default config for directive styles is CP/M's ASM.COM assembler.
+
+This default can be changed using the `g:directive_style` variable
+
+``` vim-script
+let g:directive_style = 'CPM'
+```
+
+A list of possible directive styles currently supported is:
+|:----------------- |:------------------ |
+| g:directive_style | Assembler/Platform |
+| `CPM` | CP/M'S ASM.COM Assembler |
+
+The list of supported directive styles is verry limmited at the moment, if
+your prefered style is not present, feel free to create a pull request with
+the addition. Alternatively, if you contact me, I'd be happy to add it for
+you, though do to life I cannot promise I'd be a prompt addition.
+
 ## License
 
 This file is a part of the intel 8080 syntax highlighting plugin  
