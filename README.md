@@ -35,7 +35,8 @@ $ git clone https://github.com/sage-etcher/vim-i8080-syntax.git
 Assembler directives will vary depending on platform and assembler, the
 default config for directive styles is CP/M's ASM.COM assembler.
 
-This default can be changed using the `g:directive_style` variable
+This default can be configured by changing the `g:directive_style` variable
+within the `.vimrc` file.
 
 ``` vim-script
 let g:directive_style = 'CPM'
