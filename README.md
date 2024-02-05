@@ -37,7 +37,7 @@ within the users `.vimrc` file.
 
 All supplied examples set the variables to their's default value(s).
 
-### `g:i8080_directive_style`
+### Directive Style
 
 Assembler directives will vary depending on platform and assembler, the
 default config for directive styles is CP/M's ASM.COM assembler.
@@ -50,14 +50,14 @@ A list of possible directive styles currently supported is:
 | g:i8080_directive_style | Assembler/Platform |
 |:----------------- |:------------------ |
 | `CPM` | CP/M'S ASM.COM Assembler |
-| `NONE` | Doesn't use any non standard definitions |
+| `NONE` | Don't use any non-standard definitions |
 
 The list of supported directive styles is verry limmited at the moment, if
 your prefered style is not present, feel free to create a pull request with
 the addition. Alternatively, if you contact me, I'd be happy to add it for
 you, though do to life I cannot promise I'd be a prompt addition.
 
-### `g:i8080_enable_strict_numbers`
+### Enable/Disable Strict Number Highlighting
 
 The ASM.COM assembler requires that non-decimal numbers must begin with a
 leading '0', and that no numbers can start with a seperator character ('$').
@@ -68,7 +68,7 @@ However, this is frustrating in some cases, so there's a way to disable it.
 let g:i8080_enable_strict_numbers = 1
 ```
 
-### `g:i8080_enable_prn_highlighting`
+### Enable/Disable Highlighting PRN files
 
 Enable/Disable alternate highlighting for ASM.COM's PRN output files. A value
 of 1 for on or 0 for off.
@@ -77,7 +77,7 @@ of 1 for on or 0 for off.
 let g:i8080_enable_prn_highlighting
 ```
 
-### `g:i8080_asm_extensions`
+### ASM File Extensions
 
 All strings contained within this list will be highlighted using the
 `syntax/i8080.vim` file.
@@ -91,7 +91,7 @@ let g:i8080_asm_extensions = [
     \ ]
 ```
 
-### `g:i8080_prn_extensions`
+### PRN File Extensions
 
 All strings contained within this list will be highlighted using the
 `syntax/i8080prn.vim` file.
