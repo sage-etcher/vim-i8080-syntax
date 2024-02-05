@@ -83,7 +83,7 @@ let g:i8080_highlight_number_seperator = 0  "Default
 " Enabled:  Use the `syntax/i8080prn.vim` file for all extenstions in the
 "           `i8080_prn_extensions` variable (mentioned later).
 " Disabled: Don't use the `i8080_prn_extensions` variable or the 
-" `syntax/i8080prn.vim` file.
+"           `syntax/i8080prn.vim` file.
 let g:i8080_prn_highlighting = 1            "Default
 
 
