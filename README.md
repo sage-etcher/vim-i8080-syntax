@@ -30,15 +30,7 @@ $ cd ~/.vim/pack/sage-etcher/start
 $ git clone https://github.com/sage-etcher/vim-i8080-syntax.git
 ```
 
-## Configuration
-
-To change the default setup, you must edit the configuration variables within
-your `.vimrc` file.
-
-__Note__: All supplied code examples are written using the variables default
-value(s).
-
-An example configuration file:
+## Example Configuration
 
 ``` vim-script
 " true/enabled   = 1
@@ -90,8 +82,8 @@ let g:i8080_highlight_number_seperator = 0  "Default
 " Type:     Boolean
 " Enabled:  Use the `syntax/i8080prn.vim` file for all extenstions in the
 "           `i8080_prn_extensions` variable (mentioned later).
-" Disabled: Don't use `i8080_prn_extensions` or the `syntax/i8080prn.vim`
-            file.
+" Disabled: Don't use the `i8080_prn_extensions` variable or the 
+" `syntax/i8080prn.vim` file.
 let g:i8080_prn_highlighting = 1            "Default
 
 
