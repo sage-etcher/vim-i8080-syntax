@@ -52,18 +52,28 @@ syn match intel8080Register /\v\c(\s|,)@<=(A|B|C|D|E|H|L|M|SP|PSW)(\s|,|;|!|$)@=
 syn match intel8080OPCode /\v\c(\s|:|!|^)@<=(MOV|LDAX|LDA|MVI|STA|STAX|LXI|LHLD|SHLD|SPHL|XCHG|XTHL|ADD|ADI|ADC|ACI|SUB|SUI|SBB|SBI|DAD|INR|DCR|INX|DCX|DI|EI|NOP|HLT|DAA|CMA|STC|CMC|RLC|RRC|RAL|RAR|ANA|ANI|XRA|XRI|ORA|ORI|CMP|CPI|JMP|JNZ|JZ|JNC|JC|JPO|JPE|JP|JM|PCHL|CALL|CNZ|CZ|CNC|CC|CPO|CPE|CP|CM|RET|RNZ|RZ|RNC|RC|RPO|RPE|RP|RM|RST|PUSH|POP|IN|OUT)(\s|!|;|$)@=/ nextgroup=intel8080SpecialSymbol,intel8080Register
 
 " Numbers
-let g:i8080_enable_strict_numbers = get(g:, 'i8080_enable_strict_numbers', 1)
-if g:i8080_enable_strict_numbers == 1
-    syn match intel8080NumberDecimal     /\v\c(\s|[\-\+\*\/\(\),]|^)@<=\d(\d|\$)*D=(\s|[\-\+\*\/\(\),;!]|$)@=/
-    syn match intel8080NumberHexadecimal /\v\c(\s|[\-\+\*\/\(\),]|^)@<=0(\x|\$)*H(\s|[\-\+\*\/\(\),;!]|$)@=/
-    syn match intel8080NumberOctal       /\v\c(\s|[\-\+\*\/\(\),]|^)@<=0(\o|\$)*[OQ](\s|[\-\+\*\/\(\),;!]|$)@=/
-    syn match intel8080NumberBinary      /\v\c(\s|[\-\+\*\/\(\),]|^)@<=0([01]|\$)*B(\s|[\-\+\*\/\(\),;!]|$)@=/
+let g:i8080_strict_number_formatting = get(g:, 'i8080_strict_number_formatting', 1)
+if g:i8080_strict_number_formatting == 1
+    syn match intel8080NumberDecimal     /\v\c(\s|[\-\+\*\/\(\),]|^)@<=\d(\d|\$)*D=(\s|[\-\+\*\/\(\),;!]|$)@=/ contains=intel8080NumberSep,intel8080NumberType 
+    syn match intel8080NumberHexadecimal /\v\c(\s|[\-\+\*\/\(\),]|^)@<=0(\x|\$)*H(\s|[\-\+\*\/\(\),;!]|$)@=/ contains=intel8080NumberSep,intel8080NumberType 
+    syn match intel8080NumberOctal       /\v\c(\s|[\-\+\*\/\(\),]|^)@<=0(\o|\$)*[OQ](\s|[\-\+\*\/\(\),;!]|$)@=/ contains=intel8080NumberSep,intel8080NumberType 
+    syn match intel8080NumberBinary      /\v\c(\s|[\-\+\*\/\(\),]|^)@<=0([01]|\$)*B(\s|[\-\+\*\/\(\),;!]|$)@=/ contains=intel8080NumberSep,intel8080NumberType 
 else
-    syn match intel8080NumberDecimal     /\v\c(\s|[\-\+\*\/\(\),]|^)@<=(\d|\$)*D=(\s|[\-\+\*\/\(\),;!]|$)@=/
-    syn match intel8080NumberHexadecimal /\v\c(\s|[\-\+\*\/\(\),]|^)@<=(\x|\$)*H(\s|[\-\+\*\/\(\),;!]|$)@=/
-    syn match intel8080NumberOctal       /\v\c(\s|[\-\+\*\/\(\),]|^)@<=(\o|\$)*[OQ](\s|[\-\+\*\/\(\),;!]|$)@=/
-    syn match intel8080NumberBinary      /\v\c(\s|[\-\+\*\/\(\),]|^)@<=([01]|\$)*B(\s|[\-\+\*\/\(\),;!]|$)@=/
+    syn match intel8080NumberDecimal     /\v\c(\s|[\-\+\*\/\(\),]|^)@<=(\d|\$)*D=(\s|[\-\+\*\/\(\),;!]|$)@=/ contains=intel8080NumberSep,intel8080NumberType 
+    syn match intel8080NumberHexadecimal /\v\c(\s|[\-\+\*\/\(\),]|^)@<=(\x|\$)*H(\s|[\-\+\*\/\(\),;!]|$)@=/ contains=intel8080NumberSep,intel8080NumberType 
+    syn match intel8080NumberOctal       /\v\c(\s|[\-\+\*\/\(\),]|^)@<=(\o|\$)*[OQ](\s|[\-\+\*\/\(\),;!]|$)@=/ contains=intel8080NumberSep,intel8080NumberType 
+    syn match intel8080NumberBinary      /\v\c(\s|[\-\+\*\/\(\),]|^)@<=([01]|\$)*B(\s|[\-\+\*\/\(\),;!]|$)@=/ contains=intel8080NumberSep,intel8080NumberType
 endif 
+
+let g:i8080_highlight_number_seperator = get(g:, 'i8080_highlight_number_seperator', 0)
+if g:i8080_highlight_number_seperator == 1
+    syn match intel8080NumberSep /\v\c(\x|\$)+([HOQBD](\s|[\-\+\*\/\(\),;!]|$))@=/ transparent contained contains=intel8080SpecialSymbol
+endif
+
+let g:i8080_highlight_number_type = get(g:, 'i8080_highlight_number_type', 0)
+if g:i8080_highlight_number_type == 1
+    syn match intel8080NumberType /\v\c(\x|\$)@<=[HOQBD](\s|[\-\+\*\/\(\),;!]|$)@=/ contained
+endif
 
 " Strings
 "NOTE: intel8080 mnemonics do not include escape sequences in their "strings",
@@ -97,6 +107,8 @@ hi link intel8080NumberBinary        intel8080Number
 hi link intel8080NumberOctal         intel8080Number 
 hi link intel8080NumberHexadecimal   intel8080Number 
 hi link intel8080NumberDecimal       intel8080Number 
+
+hi link intel8080NumberType          Special
 
 hi link intel8080CharacterArray      String
 

@@ -35,7 +35,11 @@ $ git clone https://github.com/sage-etcher/vim-i8080-syntax.git
 To change the default setup, you must edit the configuration variables within
 your `.vimrc` file.
 
-__Note__: All supplied code examples are written using the variables default value(s).
+__Note__: All supplied code examples are written using the variables default
+value(s).
+
+All boolean assume a value of `1` for true/enabled, or a value of `0` for
+false/disabled.
 
 ### Directive Style
 
@@ -64,19 +68,32 @@ and that no number is to start with a separator character ('$'). As such, the
 syntax highlighting follows the same restraints unless otherwise specified.
 
 ``` vim-script
-" enable  = 1
-" disable = 0
-let g:i8080_enable_strict_numbers = 1
+let g:i8080_strict_number_formatting = 1
 ```
 
-### Enable/Disable Highlighting PRN files
+### Highlighting Seperator Within Numbers
 
-This variable toggles 'i8080prn' highlighting on and off.
+Toggles syntax highlighing on/off for '$' characters, inside of numbers.
 
 ``` vim-script
-" enable  = 1
-" disable = 0
-let g:i8080_enable_prn_highlighting = 1
+g:i8080_highlight_number_seperator = 0
+```
+
+### Highlighting the Number Format
+
+Toggles syntax highlighing on/off for the numbers' trailing type specifiers.
+
+``` vim-script
+g:i8080_highlight_number_type = 0
+```
+
+### Highlighting PRN files
+
+Toggles highlighting on/off for PRN files. File extensions defined in
+`g:i8080_prn_extensions`.
+
+``` vim-script
+let g:i8080_prn_highlighting = 1
 ```
 
 ### ASM File Extensions

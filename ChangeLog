@@ -1,3 +1,12 @@
+02/05/2024 14:40 Sage I. Hendricks <sage.codes@email.com>
+
+	remvoed 'enabled_' prefix from config variable names, also added two more
+	variables for configuring numbers.
+
+	* syntax/i8080.vim: applied the new/updated config
+	* README.md: updated/added new documentation for the variables
+
+
 02/05/2024 11:10 Sage I. Hendricks <sage.codes@email.com>
 
 	Added a more configuration options, defined in the main 'README.md' file.
