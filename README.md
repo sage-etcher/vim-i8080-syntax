@@ -5,11 +5,11 @@ Adds proper syntax highlighting for intel 8080 mnemonic assembly.
 ___Note:___ by default, syntax highlighting is applied automatically to all
 files with any of the following extensions: `8080`, `8080asm`, `i8080`, `i8080asm`.
 
-The design of VIM's assembly highlighting was with the x86/x64 mnemonics in
-mind, and as such, it doesn't work well with code written in Intel 8080
-mnemonics. Though it's much more time-appropriate to use no syntax highlighting
-for Intel's 8080 mnemonics, I will admit it is much nicer to work with
-highlighting, and I'm confident you'll agree.
+VIM's assembly highlighting was designed with x86/x64 mnemonics in
+mind, and as such, it doesn't quite work for code written in Intel 8080
+style mnemonics. Though it's more time-appropriate to use no syntax
+highlighting for Intel 8080 assembly, I will admit it is much nicer to work
+with highlighting, and I'm confident you'll agree.
 
 ![A side by side comparison of code, 1, with the plugin's highlighting, 2, with VIM's base assembly highlighting, and 3, with no highlighting.](./images/example-sidebyside.jpg)
 
@@ -48,7 +48,7 @@ let g:i8080_directive_style = 'CPM'         "Default
 " Name:     Strict Number Highlighting
 " Type:     Boolean
 " Enabled:  No number may start with a '$'.
-"           All non-decimal numbers ust start with a '0'.
+"           All non-decimal numbers must start with a '0'.
 " Disabled: Numbers can start with whatever.
 " Example:  Value    Enabled  Disabled
 "           -------- -------- ---------
@@ -72,7 +72,7 @@ let g:i8080_highlight_number_seperator = 0  "Default
 " Type:     Boolean
 " Enabled:  0$0010$1111B
 "                      ^
-"           Highlight group is linked the the 'Special' group
+"           Highlight group is linked to the 'Special' group
 " Disabled: Highlights the number format specifier same as the rest of the
 "           digits.
 let g:i8080_highlight_number_seperator = 0  "Default
