@@ -1,19 +1,14 @@
-# Intel 8080 Syntax Hightlighting
+# Intel 8080 Syntax Highlighting
 
-Gives intel 8080 mnemonic assembly propper syntax highlighting.
+Adds proper syntax highlighting for intel 8080 mnemonic assembly.
 
-___Note:___ syntax highlighting is automatically applied to all files with
-an extension of either `.8080`, `.8080asm`, `.i8080`, or `.i8080asm`.
+___Note:___ by default, syntax highlighting is applied automatically to all files with any of the following extensions: `8080`, `8080asm`, `i8080`, `i8080asm`.
 
-VIM's standard assembly highlighting was designed with x86/x64 mnemonics in
-mind, as such it doesn't work well with code written in intel 8080 mnemonics.
-Though it's much more time appropriate to use no syntax highlighting, I have
-to admit it much nicer to work with highlighting, and I'm confident you'll
-agree.
+The design of VIM's assembly highlighting was with the x86/x64 mnemonics in mind, and as such, it doesn't work well with code written in Intel 8080 mnemonics. Though it's much more time-appropriate to use no syntax highlighting for Intel's 8080 mnemonics, I will admit it is much nicer to work with highlighting, and I'm confident you'll agree.
 
 ![A side by side comparison of code, 1, with the plugin's highlighting, 2, with VIM's base assembly highlighting, and 3, with no highlighting.](./images/example-sidebyside.jpg)
 
-Isolated, zoomed in versions of each can be found here:
+You can view individual examples here:
 [Plugin Highlighting](./images/example-plugin.jpg),
 [ASM Highlighting](./images/example-base-ASM.jpg),
 and [No Highlighting](./images/example-syntax-off.jpg).
@@ -22,7 +17,7 @@ and [No Highlighting](./images/example-syntax-off.jpg).
 
 ### Vim 8 Package Manager
 
-Install the plugin as a Vim 8 Package
+Installing the plugin as a Vim 8 Package
 
 ``` bash
 $ mkdir -pv ~/.vim/pack/sage-etcher/start
@@ -32,15 +27,13 @@ $ git clone https://github.com/sage-etcher/vim-i8080-syntax.git
 
 ## Configuration
 
-All defaults can be configured by changing the associated variable(s)
-within the users `.vimrc` file.
+To change the default setup, you must edit the configuration variables within your `.vimrc` file.
 
-All supplied examples set the variables to their's default value(s).
+__note__: All supplied code examples are written using the variables default value(s).
 
 ### Directive Style
 
-Assembler directives will vary depending on platform and assembler, the
-default config for directive styles is CP/M's ASM.COM assembler.
+Assembler directives will vary depending on the platform and assembler; the default config for directive styles is CP/M's ASM.COM assembler.
 
 ``` vim-script
 let g:i8080_directive_style = 'CPM'
@@ -52,26 +45,21 @@ A list of possible directive styles currently supported is:
 | `CPM` | CP/M'S ASM.COM Assembler |
 | `NONE` | Don't use any non-standard definitions |
 
-The list of supported directive styles is verry limmited at the moment, if
-your prefered style is not present, feel free to create a pull request with
-the addition. Alternatively, if you contact me, I'd be happy to add it for
-you, though do to life I cannot promise I'd be a prompt addition.
+The list of supported directive styles is quite limited at the moment. If your preferred style isn't present, you may create a pull request with the addition. Alternatively, contact me, and I'll add it myself; however, I cannot promise a prompt addition, as life can get in the way.
 
 ### Enable/Disable Strict Number Highlighting
 
-The ASM.COM assembler requires that non-decimal numbers must begin with a
-leading '0', and that no numbers can start with a seperator character ('$').
-
-However, this is frustrating in some cases, so there's a way to disable it.
+The ASM.COM assembler requires that non-decimal numbers begin with a leading '0' and that no number is to start with a separator character ('$'). As such, the syntax highlighting follows the same restraints unless otherwise specified.
 
 ``` vim-script
+" enable  = 1
+" disable = 0
 let g:i8080_enable_strict_numbers = 1
 ```
 
 ### Enable/Disable Highlighting PRN files
 
-Enable/Disable alternate highlighting for ASM.COM's PRN output files. A value
-of 1 for on or 0 for off.
+This variable toggles 'i8080prn' highlighting on and off.
 
 ``` vim-script
 let g:i8080_enable_prn_highlighting
@@ -79,8 +67,7 @@ let g:i8080_enable_prn_highlighting
 
 ### ASM File Extensions
 
-All strings contained within this list will be highlighted using the
-`syntax/i8080.vim` file.
+All strings within this list will be treated as file extensions to have 'i8080' highlighting applied.
 
 ``` vim-script
 let g:i8080_asm_extensions = [
@@ -93,10 +80,9 @@ let g:i8080_asm_extensions = [
 
 ### PRN File Extensions
 
-All strings contained within this list will be highlighted using the
-`syntax/i8080prn.vim` file.
+All strings within this list are file extensions to have 'i8080prn' highlighting applied.
 
-If `g:i8080_enable_prn_highlighting` is disable (set to 0), this does nothing.
+If `g:i8080_enable_prn_highlighting` is disabled (set to 0), this does nothing.
 
 ``` vim-script
 let g:i8080_prn_extensions = [
@@ -107,7 +93,7 @@ let g:i8080_prn_extensions = [
 
 ## License
 
-This file is a part of the intel 8080 syntax highlighting plugin  
+This file is a part of the Intel 8080 Syntax Highlighting Vim Plugin.
 
 Copyright 2024 Sage I. Hendricks  
 Licensed under the Apache License, Version 2.0 (the "License");  
