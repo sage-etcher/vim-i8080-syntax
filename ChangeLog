@@ -1,3 +1,11 @@
+02/05/2024 14:48 Sage I. Hendricks <sage.codes@email.com>
+
+	Patched a case where non strict number highlighting would claim registers
+	B and D.
+
+	* syntax/i8080.vim: changed non strict number regex to use '1 or more'
+	instead of the previous '0 or more'
+
 02/05/2024 14:40 Sage I. Hendricks <sage.codes@email.com>
 
 	remvoed 'enabled_' prefix from config variable names, also added two more

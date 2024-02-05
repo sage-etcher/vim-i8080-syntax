@@ -59,10 +59,10 @@ if g:i8080_strict_number_formatting == 1
     syn match intel8080NumberOctal       /\v\c(\s|[\-\+\*\/\(\),]|^)@<=0(\o|\$)*[OQ](\s|[\-\+\*\/\(\),;!]|$)@=/ contains=intel8080NumberSep,intel8080NumberType 
     syn match intel8080NumberBinary      /\v\c(\s|[\-\+\*\/\(\),]|^)@<=0([01]|\$)*B(\s|[\-\+\*\/\(\),;!]|$)@=/ contains=intel8080NumberSep,intel8080NumberType 
 else
-    syn match intel8080NumberDecimal     /\v\c(\s|[\-\+\*\/\(\),]|^)@<=(\d|\$)*D=(\s|[\-\+\*\/\(\),;!]|$)@=/ contains=intel8080NumberSep,intel8080NumberType 
-    syn match intel8080NumberHexadecimal /\v\c(\s|[\-\+\*\/\(\),]|^)@<=(\x|\$)*H(\s|[\-\+\*\/\(\),;!]|$)@=/ contains=intel8080NumberSep,intel8080NumberType 
-    syn match intel8080NumberOctal       /\v\c(\s|[\-\+\*\/\(\),]|^)@<=(\o|\$)*[OQ](\s|[\-\+\*\/\(\),;!]|$)@=/ contains=intel8080NumberSep,intel8080NumberType 
-    syn match intel8080NumberBinary      /\v\c(\s|[\-\+\*\/\(\),]|^)@<=([01]|\$)*B(\s|[\-\+\*\/\(\),;!]|$)@=/ contains=intel8080NumberSep,intel8080NumberType
+    syn match intel8080NumberDecimal     /\v\c(\s|[\-\+\*\/\(\),]|^)@<=(\d|\$)+D=(\s|[\-\+\*\/\(\),;!]|$)@=/ contains=intel8080NumberSep,intel8080NumberType 
+    syn match intel8080NumberHexadecimal /\v\c(\s|[\-\+\*\/\(\),]|^)@<=(\x|\$)+H(\s|[\-\+\*\/\(\),;!]|$)@=/ contains=intel8080NumberSep,intel8080NumberType 
+    syn match intel8080NumberOctal       /\v\c(\s|[\-\+\*\/\(\),]|^)@<=(\o|\$)+[OQ](\s|[\-\+\*\/\(\),;!]|$)@=/ contains=intel8080NumberSep,intel8080NumberType 
+    syn match intel8080NumberBinary      /\v\c(\s|[\-\+\*\/\(\),]|^)@<=([01]|\$)+B(\s|[\-\+\*\/\(\),;!]|$)@=/ contains=intel8080NumberSep,intel8080NumberType
 endif 
 
 let g:i8080_highlight_number_seperator = get(g:, 'i8080_highlight_number_seperator', 0)
