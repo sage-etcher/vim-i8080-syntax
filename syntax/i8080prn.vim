@@ -1,4 +1,5 @@
-source $XDG_CONFIG_HOME/vim/pack/sage-etcher/start/vim-i8080-syntax/syntax/i8080.vim
+" Source the main config file
+runtime syntax/i8080.vim
 
 " Address is a 16 bit hex value on line 2
 " Hex value is 0-5 8 bit hex values on line 7 (or an equal sign)

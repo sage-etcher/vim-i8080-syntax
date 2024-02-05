@@ -32,25 +32,78 @@ $ git clone https://github.com/sage-etcher/vim-i8080-syntax.git
 
 ## Configuration
 
+All defaults can be configured by changing the associated variable(s)
+within the users `.vimrc` file.
+
+All supplied examples set the variables to their's default value(s).
+
+### `g:i8080_directive_style`
+
 Assembler directives will vary depending on platform and assembler, the
 default config for directive styles is CP/M's ASM.COM assembler.
 
-This default can be configured by changing the `g:directive_style` variable
-within the `.vimrc` file.
-
 ``` vim-script
-let g:directive_style = 'CPM'
+let g:i8080_directive_style = 'CPM'
 ```
 
 A list of possible directive styles currently supported is:
-| g:directive_style | Assembler/Platform |
+| g:i8080_directive_style | Assembler/Platform |
 |:----------------- |:------------------ |
 | `CPM` | CP/M'S ASM.COM Assembler |
+| `NONE` | Doesn't use any non standard definitions |
 
 The list of supported directive styles is verry limmited at the moment, if
 your prefered style is not present, feel free to create a pull request with
 the addition. Alternatively, if you contact me, I'd be happy to add it for
 you, though do to life I cannot promise I'd be a prompt addition.
+
+### `g:i8080_enable_strict_numbers`
+
+The ASM.COM assembler requires that non-decimal numbers must begin with a
+leading '0', and that no numbers can start with a seperator character ('$').
+
+However, this is frustrating in some cases, so there's a way to disable it.
+
+``` vim-script
+let g:i8080_enable_strict_numbers = 1
+```
+
+### `g:i8080_enable_prn_highlighting`
+
+Enable/Disable alternate highlighting for ASM.COM's PRN output files. A value
+of 1 for on or 0 for off.
+
+``` vim-script
+let g:i8080_enable_prn_highlighting
+```
+
+### `g:i8080_asm_extensions`
+
+All strings contained within this list will be highlighted using the
+`syntax/i8080.vim` file.
+
+``` vim-script
+let g:i8080_asm_extensions = [
+    \ 'i8080',
+    \ 'i8080asm',
+    \ '8080',
+    \ '8080asm'
+    \ ]
+```
+
+### `g:i8080_prn_extensions`
+
+All strings contained within this list will be highlighted using the
+`syntax/i8080prn.vim` file.
+
+If `g:i8080_enable_prn_highlighting` is disable (set to 0), this does nothing.
+
+``` vim-script
+let g:i8080_prn_extensions = [
+    \ 'prn',
+    \ 'PRN'
+    \ ]
+```
 
 ## License
 

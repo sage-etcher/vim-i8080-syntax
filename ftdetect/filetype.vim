@@ -16,14 +16,37 @@
 "  limitations under the License.
 "
 
-"au BufRead,BufNewFile *.ASM setfiletype i8080
-"au BufRead,BufNewFile *.asm setfiletype i8080
-au BufRead,BufNewFile *.8080 setfiletype i8080
-au BufRead,BufNewFile *.8080asm setfiletype i8080
-au BufRead,BufNewFile *.i8080 setfiletype i8080
-au BufRead,BufNewFile *.i8080asm setfiletype i8080
+function! SetFileType (ext, type)
+    let cmd = 'au BufReadPost,BufNewFile *.' . a:ext . ' setfiletype ' . a:type
+    exec cmd
+endfunction 
 
-au BufRead,BufNewFile *.PRN setfiletype i8080prn
-au BufRead,BufNewFile *.prn setfiletype i8080prn
-au BufRead,BufNewFile *.8080prn setfiletype i8080prn
-au BufRead,BufNewFile *.i8080prn setfiletype i8080prn
+
+" set the assembly extensions
+let default_asm_ext = [
+    \ 'i8080', 
+    \ 'i8080asm',
+    \ '8080',
+    \ '8080asm'
+    \ ]
+
+let g:i8080_asm_extensions = get(g:, 'i8080_asm_extensions', default_asm_ext)
+for asm_ext in g:i8080_asm_extensions
+    call SetFileType (asm_ext, 'i8080')
+endfor
+
+" set the prn extensions
+let g:i8080_enable_prn_highlighting = get(g:, 'i8080_enable_prn_highlighting', 1)
+if g:i8080_enable_prn_highlighting == 1
+    let default_prn_ext = [
+        \ 'prn', 
+        \ 'PRN',
+        \ ]
+
+    let g:i8080_prn_extensions = get(g:, 'i8080_prn_extensions', default_prn_ext)
+    for prn_ext in g:i8080_prn_extensions
+        call SetFileType (prn_ext, 'i8080prn')
+    endfor
+endif 
+
+

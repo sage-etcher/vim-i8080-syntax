@@ -1,3 +1,24 @@
+02/05/2024 11:10 Sage I. Hendricks <sage.codes@email.com>
+
+	Added a more configuration options, defined in the main 'README.md' file.
+	Updated existing config variables to follow a similar nameing scheme.
+
+	* syntax/i8080.vim: updated existing config variable, and added an 
+	'i8080_directive_style' value of 'NONE'
+	* ftdetect/filetype.vim: assign file types based on config varaibles
+	* README.md: updated the g:directive_style variable to fit new naming
+	scheme, and added breif documentation for new config varibles.
+	* syntax/i8080prn.vim: update path to use a relative runtime path
+
+02/05/2024 10:22 Sage I. Hendricks <sage.codes@email.com>
+
+	Added option for less strict number regex. disabling the number
+	requirements for a leading 0 and enabling the number to start with
+	seperator characters, '$'.
+
+	* syntax/i8080.vim: added global variable 'g:i8080_enable_strict_numbers'
+	to let the user toggle between strict and lax number highlighting.
+
 02/05/2024 10:18 Sage I. Hendricks <sage.codes@email.com>
 
 	Added highlighting for ASM.COM outputted PRN files.
