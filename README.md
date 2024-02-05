@@ -74,7 +74,9 @@ let g:i8080_enable_strict_numbers = 1
 This variable toggles 'i8080prn' highlighting on and off.
 
 ``` vim-script
-let g:i8080_enable_prn_highlighting
+" enable  = 1
+" disable = 0
+let g:i8080_enable_prn_highlighting = 1
 ```
 
 ### ASM File Extensions
