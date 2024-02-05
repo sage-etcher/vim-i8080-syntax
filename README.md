@@ -35,7 +35,7 @@ $ git clone https://github.com/sage-etcher/vim-i8080-syntax.git
 All defaults can be configured by changing the associated variable(s)
 within the users `.vimrc` file.
 
-All supplied examples set the variables to their's default value(s).
+All supplied examples set the associated variable to their default value.
 
 ### Directive Style
 
