@@ -1,3 +1,12 @@
+02/05/2024 10:18 Sage I. Hendricks <sage.codes@email.com>
+
+	Added highlighting for ASM.COM outputted PRN files.
+	
+	* ftdetect/filetype.vim: added detection for extensions: 'prn', '8080prn',
+	'i8080prn'
+	* syntax/i8080prn.vim: sources main syntax file then adds highlighting for
+	address line, hex values, and alternate regex for intel8080CommentStyle2
+
 02/01/2024 13:57 Sage I. Hendricks <sage.codes@email.com>
 
 	Updated the README.md file, and combined all 3 examples into 1 image.
