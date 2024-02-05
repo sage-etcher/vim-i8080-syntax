@@ -38,87 +38,89 @@ your `.vimrc` file.
 __Note__: All supplied code examples are written using the variables default
 value(s).
 
-All boolean assume a value of `1` for true/enabled, or a value of `0` for
-false/disabled.
-
-### Directive Style
-
-Assembler directives will vary depending on the platform and assembler; the
-default config for directive styles is CP/M's ASM.COM assembler.
+An example configuration file:
 
 ``` vim-script
-let g:i8080_directive_style = 'CPM'
-```
+" true/enabled   = 1
+" false/disabled = 0
 
-A list of possible directive styles currently supported is:
-| g:i8080_directive_style | Assembler/Platform |
-|:----------------- |:------------------ |
-| `CPM` | CP/M'S ASM.COM Assembler |
-| `NONE` | Don't use any non-standard definitions |
+" Directive Style [String]
+"   Value   Description/Platform
+"   ------- ------------------------------------------------------------------
+"   CPM     CP/M's ASM Assembler
+"   NONE    Don't use any non-standard definitions
+"
+let g:i8080_directive_style = 'CPM'         "Default
 
-The list of supported directive styles is quite limited at the moment. If your
-preferred style isn't present, you may create a pull request with the addition.
-Alternatively, contact me, and I'll add it myself; however, I cannot promise a
-prompt addition, as life can get in the way.
 
-### Enable/Disable Strict Number Highlighting
+" Strict Number Highlighting [Boolean]
+"   Enabled: non-decimal numbers MUST begin with a '0' and CANNOT start with
+"            a '$' seperator.
+"   Disabled: All numbers can start with any of their respective digits
+"
+"   Example:
+"     Number   Strict   Lax
+"     -------- -------- -----
+"     07DH     Good     Good
+"     0561Q    Good     Good
+"     9AH      BAD      Good
+"     $1101B   BAD      Good
+"
+let g:i8080_strict_number_formatting = 1    "Default
 
-The ASM.COM assembler requires that non-decimal numbers begin with a leading '0'
-and that no number is to start with a separator character ('$'). As such, the
-syntax highlighting follows the same restraints unless otherwise specified.
 
-``` vim-script
-let g:i8080_strict_number_formatting = 1
-```
+" Highlight Number Seperators [Boolean]
+"   Toggles the highlighting of '$'s within numbers. By default, seperators
+"   match the highlighting as the number they are a part of.
+"
+" Example (Enabled):   0$0010$1111B
+"                       ^    ^
+"                      highlighted seperately
+"
+let g:i8080_highlight_number_seperator = 0  "Default
 
-### Highlighting Seperator Within Numbers
 
-Toggles syntax highlighing on/off for '$' characters, inside of numbers.
+" Highlight Number Type Specifier [Boolean]
+"   Toggles the highlighting of the type specifier following the numbers. By 
+"   default, type characters match the highlighting as the number they are
+"   refering to.
+"
+" Example (Enabled):   0$0010$1111B
+"                                 ^
+"                      highlighted seperately
+"
+let g:i8080_highlight_number_seperator = 0  "Default
 
-``` vim-script
-g:i8080_highlight_number_seperator = 0
-```
 
-### Highlighting the Number Format
+" PRN Syntax Highlighting [Boolean]
+"   A `*.PRN` file is often the output of CP/M's ASM.COM assembler, the syntax
+"   highlighting for them requires a minor modification to the main script.
+"   This enables the use of a modified script `syntax/i8080prn.vim` for sed
+"   Purpose
+"
+let g:i8080_prn_highlighting = 1            "Default
 
-Toggles syntax highlighing on/off for the numbers' trailing type specifiers.
 
-``` vim-script
-g:i8080_highlight_number_type = 0
-```
-
-### Highlighting PRN files
-
-Toggles highlighting on/off for PRN files. File extensions defined in
-`g:i8080_prn_extensions`.
-
-``` vim-script
-let g:i8080_prn_highlighting = 1
-```
-
-### ASM File Extensions
-
-All strings within this list will be treated as file extensions to have 'i8080'
-highlighting applied.
-
-``` vim-script
-let g:i8080_asm_extensions = [
+" ASM File Extensions [String Array]
+"   A list of files extensions to apply the plugin's syntax highlighting to.
+"   syntax file: `syntax/i8080.vim`
+"   filetype: `i8080`
+"
+let g:i8080_asm_extensions = [              "Defaults
     \ 'i8080',
     \ 'i8080asm',
     \ '8080',
     \ '8080asm'
     \ ]
-```
 
-### PRN File Extensions
 
-All strings within this list are file extensions to have 'i8080prn'
-highlighting applied.
-
-If `g:i8080_enable_prn_highlighting` is disabled (set to 0), this does nothing.
-
-``` vim-script
-let g:i8080_prn_extensions = [
+" PRN File Extensions [String Array]
+"   A list of files extensions to apply the plugin's modified syntax
+"   highlighting to.
+"   syntax file: `syntax/i8080prn.vim`
+"   filetype: `i8080prn`
+"
+let g:i8080_prn_extensions = [              "Defaults
     \ 'prn',
     \ 'PRN'
     \ ]
