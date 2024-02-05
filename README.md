@@ -44,68 +44,62 @@ An example configuration file:
 " true/enabled   = 1
 " false/disabled = 0
 
-" Directive Style [String]
-"   Value   Description/Platform
-"   ------- ------------------------------------------------------------------
-"   CPM     CP/M's ASM Assembler
-"   NONE    Don't use any non-standard definitions
-"
+" Name:    Directive Style
+" Type:    String
+" Values:  Value   Description/Platform
+"          ------- ----------------------------------------------------------
+"          CPM     CP/M's ASM Assembler
+"          NONE    Don't use any non-standard definitions
 let g:i8080_directive_style = 'CPM'         "Default
 
 
-" Strict Number Highlighting [Boolean]
-"   Enabled: non-decimal numbers MUST begin with a '0' and CANNOT start with
-"            a '$' seperator.
-"   Disabled: All numbers can start with any of their respective digits
-"
-"   Example:
-"     Number   Strict   Lax
-"     -------- -------- -----
-"     07DH     Good     Good
-"     0561Q    Good     Good
-"     9AH      BAD      Good
-"     $1101B   BAD      Good
-"
+" Name:     Strict Number Highlighting
+" Type:     Boolean
+" Enabled:  No number may start with a '$'.
+"           All non-decimal numbers ust start with a '0'.
+" Disabled: Numbers can start with whatever.
+" Example:  Value    Enabled  Disabled
+"           -------- -------- ---------
+"           07DH     Good     Good
+"           0561Q    Good     Good
+"           9AH      BAD      Good
+"           $1101B   BAD      Good
 let g:i8080_strict_number_formatting = 1    "Default
 
 
-" Highlight Number Seperators [Boolean]
-"   Toggles the highlighting of '$'s within numbers. By default, seperators
-"   match the highlighting as the number they are a part of.
-"
-" Example (Enabled):   0$0010$1111B
-"                       ^    ^
-"                      highlighted seperately
-"
+" Name:     Highlight Number Seperators
+" Type:     Boolean
+" Enabled:  0$0010$1111B
+"            ^    ^
+"           Highlight group is linked to the 'Special' group
+" Disabled: Highlights '$' same as the rest of the digits.
 let g:i8080_highlight_number_seperator = 0  "Default
 
 
-" Highlight Number Type Specifier [Boolean]
-"   Toggles the highlighting of the type specifier following the numbers. By 
-"   default, type characters match the highlighting as the number they are
-"   refering to.
-"
-" Example (Enabled):   0$0010$1111B
-"                                 ^
-"                      highlighted seperately
-"
+" Name:     Highlight Number Type Specifier
+" Type:     Boolean
+" Enabled:  0$0010$1111B
+"                      ^
+"           Highlight group is linked the the 'Special' group
+" Disabled: Highlights the number format specifier same as the rest of the
+"           digits.
 let g:i8080_highlight_number_seperator = 0  "Default
 
 
-" PRN Syntax Highlighting [Boolean]
-"   A `*.PRN` file is often the output of CP/M's ASM.COM assembler, the syntax
-"   highlighting for them requires a minor modification to the main script.
-"   This enables the use of a modified script `syntax/i8080prn.vim` for sed
-"   Purpose
-"
+" Name:     PRN Syntax Highlighting
+" Type:     Boolean
+" Enabled:  Use the `syntax/i8080prn.vim` file for all extenstions in the
+"           `i8080_prn_extensions` variable (mentioned later).
+" Disabled: Don't use `i8080_prn_extensions` or the `syntax/i8080prn.vim`
+            file.
 let g:i8080_prn_highlighting = 1            "Default
 
 
-" ASM File Extensions [String Array]
-"   A list of files extensions to apply the plugin's syntax highlighting to.
-"   syntax file: `syntax/i8080.vim`
-"   filetype: `i8080`
-"
+" Name:     ASM File Extensions
+" Type:     [String]
+" Values:   What file extensions should the `syntax/i8080.vim` syntax file be
+"           applied to?
+" FileType: i8080
 let g:i8080_asm_extensions = [              "Defaults
     \ 'i8080',
     \ 'i8080asm',
@@ -114,12 +108,11 @@ let g:i8080_asm_extensions = [              "Defaults
     \ ]
 
 
-" PRN File Extensions [String Array]
-"   A list of files extensions to apply the plugin's modified syntax
-"   highlighting to.
-"   syntax file: `syntax/i8080prn.vim`
-"   filetype: `i8080prn`
-"
+" Name:     PRN File Extensions
+" Type:     [String]
+" Values:   What file extensions should the `syntax/i8080prn.vim` syntax file
+"           be applied to?
+" FileType: i8080prn
 let g:i8080_prn_extensions = [              "Defaults
     \ 'prn',
     \ 'PRN'
