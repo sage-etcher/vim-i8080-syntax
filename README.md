@@ -92,12 +92,12 @@ let g:i8080_prn_highlighting = 1            "Default
 " Values:   What file extensions should the `syntax/i8080.vim` syntax file be
 "           applied to?
 " FileType: i8080
-let g:i8080_asm_extensions = [              "Defaults
-    \ 'i8080',
-    \ 'i8080asm',
-    \ '8080',
-    \ '8080asm'
-    \ ]
+let g:i8080_asm_extensions = [
+    \ '*.i8080',
+    \ '*.i8080asm',
+    \ '*.8080',
+    \ '*.8080asm'
+    \ ]                                     "Defaults
 
 
 " Name:     PRN File Extensions
@@ -105,10 +105,10 @@ let g:i8080_asm_extensions = [              "Defaults
 " Values:   What file extensions should the `syntax/i8080prn.vim` syntax file
 "           be applied to?
 " FileType: i8080prn
-let g:i8080_prn_extensions = [              "Defaults
-    \ 'prn',
-    \ 'PRN'
-    \ ]
+let g:i8080_prn_extensions = [
+    \ '*.prn',
+    \ '*.PRN'
+    \ ]                                     "Defaults
 ```
 
 ## License

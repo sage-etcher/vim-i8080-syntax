@@ -16,37 +16,74 @@
 "  limitations under the License.
 "
 
-function! SetFileType (ext, type)
-    let cmd = 'au BufReadPost,BufNewFile *.' . a:ext . ' setfiletype ' . a:type
-    exec cmd
+function! SetFileType (ext, filetype)
+
+    " Concatonate strings into a command, then run it
+    let l:cmd = 'au BufReadPost,BufNewFile ' . a:ext . ' setfiletype ' . a:filetype
+    exec l:cmd
+
+    return
 endfunction 
 
 
-" set the assembly extensions
-let default_asm_ext = [
-    \ 'i8080', 
-    \ 'i8080asm',
-    \ '8080',
-    \ '8080asm'
-    \ ]
+function! SetFileTypesI (ext_arr, filetype)
 
-let g:i8080_asm_extensions = get(g:, 'i8080_asm_extensions', default_asm_ext)
-for asm_ext in g:i8080_asm_extensions
-    call SetFileType (asm_ext, 'i8080')
-endfor
+    " Loop through the array of extensions
+    for l:ext in a:ext_arr
+        " Set each extension to a file type
+        call SetFileType (l:ext, a:filetype)
+    endfor
 
-" set the prn extensions
-let g:i8080_enable_prn_highlighting = get(g:, 'i8080_enable_prn_highlighting', 1)
-if g:i8080_enable_prn_highlighting == 1
-    let default_prn_ext = [
-        \ 'prn', 
-        \ 'PRN',
+    return
+endfunction
+
+
+function! SetASMExtensions ()
+
+    " Get user defined config if it exists, otherwise use defaults.
+    let l:filetype = 'i8080'
+    let l:default_ext = [
+        \ '*.i8080', 
+        \ '*.i8080asm',
+        \ '*.8080',
+        \ '*.8080asm'
         \ ]
 
-    let g:i8080_prn_extensions = get(g:, 'i8080_prn_extensions', default_prn_ext)
-    for prn_ext in g:i8080_prn_extensions
-        call SetFileType (prn_ext, 'i8080prn')
-    endfor
-endif 
+    let l:extensions = get(g:, 'i8080_asm_extensions', l:default_ext)
+
+    " run the commands
+    call SetFileTypesI(l:extensions, l:filetype)
+
+    return
+endfunction
 
 
+function! SetPRNExtensions ()
+    
+    " Guard Statement
+    let l:prn_default = 1 
+    let l:prn_enabled = get(g:, 'i8080_enable_prn_highlighting', l:prn_default)
+
+    if l:prn_enabled != 1 
+        return
+    endif
+
+    " Get user defined config if it exists, otherwise use defaults.
+    let l:filetype = 'i8080prn'
+    let l:default_ext = [
+        \ '*.prn', 
+        \ '*.PRN',
+        \ ]
+
+    let l:extensions = get(g:, 'i8080_prn_extensions', l:default_ext)
+
+    " run the commands
+    call SetFileTypesI(l:extensions, l:filetype)
+
+    return
+endfunction
+
+
+" Main ish, run this on load
+call SetASMExtensions()
+call SetPRNExtensions()
