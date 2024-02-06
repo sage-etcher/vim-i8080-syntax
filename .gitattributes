@@ -1,7 +1,7 @@
 *       text=auto
 *.vim   text eol=lf
-*.asm   text eol=lf linguist-vendored=false
-*.8080  text eol=lf linguist-vendored=false linguist-language=Assembly
+*.asm   text eol=crlf linguist-vendored=false
+*.8080  text eol=crlf linguist-vendored=false linguist-language=Assembly
 *.md    text eol=lf linguist-vendored=false
 
 *.png   binary
