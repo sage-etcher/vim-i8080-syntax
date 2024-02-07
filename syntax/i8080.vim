@@ -76,7 +76,7 @@ let s:BIN_MATCH = s:GROUP_PREFIX . s:NUM_GROUP . 'Binary'
 
 " Regex Helper functions
 function! RegExOr(match_arr)
-   return join(a:match_arr, '|')
+   return '(' . join(a:match_arr, '|') . ')'
 endfunction
 
 function! RegExLookBehind(regex_str)
@@ -95,14 +95,14 @@ endfunction
 " Vim helper functions
 function! VimMatch(regex_str, match_name, extra='')
     " Generate a new syn match command based on parameters
-    let l:cmd =
+    let s:cmd =
         \ 'syn match' .
         \ ' ' . a:match_name . ' ' .
         \ '/' . a:regex_str . '/' .
         \ ' ' . a:extra
 
     " Execute the command
-    exec l:cmd
+    exec s:cmd
 
     return
 endfunction
@@ -110,13 +110,13 @@ endfunction
 
 function! VimHiLink(match_name, link_name)
     " Generate new hi link command based on parameters
-    let l:cmd =
+    let s:cmd =
         \ 'hi link' .
         \ ' ' . a:match_name .
         \ ' ' . a:link_name
 
     " Execute the command
-    exec l:cmd
+    exec s:cmd
 
     return
 endfunction
@@ -125,16 +125,16 @@ endfunction
 " Style Functions
 function! ApplyStyleCPM ()
     " define local constants
-    let l:LOGICAL_EOL = '!'
-    let l:COMMENT_A = ';'
-    let l:COMMENT_B = '\*'
-    let l:MATH_SYMBOLS = [ '\+', '\-', '\*', '\/', '\(', '\)' ]
-    let l:MATH_KEYWORDS = [ 'MOD' ]
-    let l:LOGIC_KEYWORDS = [ 'NOT', 'AND', 'OR', 'XOR', 'SHL', 'SHR' ]
-    let l:ASM_DIRECTIVES = [ 
+    let s:LOGICAL_EOL = '!'
+    let s:COMMENT_A = ';'
+    let s:COMMENT_B = '\*'
+    let s:MATH_SYMBOLS = [ '\+', '\-', '\*', '\/', '\(', '\)' ]
+    let s:MATH_KEYWORDS = [ 'MOD' ]
+    let s:LOGIC_KEYWORDS = [ 'NOT', 'AND', 'OR', 'XOR', 'SHL', 'SHR' ]
+    let s:ASM_DIRECTIVES = [ 
         \ 'ORG', 'END', 'IF', 'ENDIF', 'DB', 'DW', 'DS', 'EQU', 'SET'
         \ ]
-    let l:IGNORED_SEPERATOR = '\$'
+    let s:IGNORED_SEPERATOR = '\$'
 
     " use nested local functions
     let l:cpm = {}
@@ -144,9 +144,9 @@ function! ApplyStyleCPM ()
         
         let l:OPCODE_PREFIX = [
             \ s:START_OF_LINE,
-            \ l:LOGICAL_EOL
+            \ s:LOGICAL_EOL,
             \ s:WHITESPACE,
-            \ s:LABEL_SYMBOL,
+            \ s:LABEL_SYMBOL
             \ ]
 
         let l:OPCODE_SUFFIX = [
@@ -186,7 +186,9 @@ function! ApplyStyleCPM ()
             \ RegExLookBehind(RegExOr(l:REGISTER_PREFIX)) .
             \ RegExOr(s:REGISTER_ARR) .
             \ RegExLookAhead(RegExOr(l:REGISTER_SUFFIX))
-    
+   
+        echo l:REGISTER_REGEX
+
         call VimMatch(l:REGISTER_REGEX, s:REGISTER_MATCH)
 
         return
@@ -198,16 +200,16 @@ function! ApplyStyleCPM ()
             \ s:START_OF_LINE,
             \ s:OPCODE_PARAM_SEPERATOR
             \ ]
-        call extend(l:NUMBER_PREFIX, l:MATH_SYMBOLS)
+        call extend(l:NUMBER_PREFIX, s:MATH_SYMBOLS)
         
         let l:NUMBER_SUFFIX = [
             \ s:WHITESPACE,
-            \ l:COMMENT_A,
-            \ l:LOGICAL_EOL,
+            \ s:COMMENT_A,
+            \ s:LOGICAL_EOL,
             \ s:OPCODE_PARAM_SEPERATOR,
             \ s:END_OF_LINE
             \ ]
-        call extend(l:NUMBER_SUFFIX, l:MATH_SYMBOLS)
+        call extend(l:NUMBER_SUFFIX, s:MATH_SYMBOLS)
 
         let l:DEC_REGEX =
             \ s:REGEX_MODE .
